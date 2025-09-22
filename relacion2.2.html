@@ -1,7 +1,7 @@
 <script>
     //2. Calculadora de Propinas: pide al usuario el total de una cuenta y el porcentaje de propina que quiere dejar. Calcula y muestra la propina.
-    let cuenta = prompt("Introduce el total de la cuenta a pagar: ");
-    let propina = Number(prompt("¿Qué porcentaje de propina quieres dejar?: "))
+    let cuenta = Number(prompt("Introduce el total de la cuenta a pagar:"));
+    let propina = Number(prompt("¿Qué porcentaje de propina quieres dejar?: "));
     let division = propina / 100;
     let multiplicacion = cuenta * division;
     console.log("Ha dejado " + multiplicacion + " euros de propina");
