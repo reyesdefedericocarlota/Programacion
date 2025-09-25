@@ -1,0 +1,15 @@
+<script>
+    //6. Determinar si un año es bisiesto: solicita un año y determina si es bisiesto.
+    let año = parseInt(prompt("Introduce un año:"));
+    let divisible4 = (año % 4 == 0)
+    let noDivisible100 = (año % 100 != 0)
+    let divisible400 = (año % 400 == 0)
+    
+    let bisiesto = ((divisible4 && noDivisible100) || (divisible400)) 
+    if (bisiesto) {
+        console.log(año + " es bisiesto")
+    }
+    else {
+        console.log(año + " no es bisiesto")
+    }
+</script>
