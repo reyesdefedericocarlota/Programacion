@@ -1,0 +1,21 @@
+<script>
+    //12. Identificar el tipo de triángulo: pide al usuario las longitudes de los tres lados de un triángulo e indica si es equilátero, isósceles o escaleno.
+    let longitud1 = Number(prompt("Introduce una longitud"))
+    let longitud2 = Number(prompt("Introduce una longitud"))
+    let longitud3 = Number(prompt("Introduce una longitud"))
+
+    let equilatero
+    let isosceles
+    let escaleno
+
+    if (equilatero){
+       let equilatero = longitud1 == longitud2 == longitud3
+        console.log("Es equilátero")
+    }   else if (isosceles){
+        let isosceles = longitud1 == longitud2 != longitud3
+        console.log("Es isósceles")
+    }   else if (escaleno){
+        let escaleno = longitud3 != longitud2 != longitud3
+        console.log("Es escaleno")
+    }
+</script>
