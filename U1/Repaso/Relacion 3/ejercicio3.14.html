@@ -1,0 +1,18 @@
+<script>
+    //Solicita la temperatura actual e imprime:
+
+    let temperatura = prompt("Escribe la temperatura actual en ºC")
+    let muyFrio = (temperatura < 0)
+    let Frio = (temperatura >= 0 && temperatura <= 15)
+    let Templado = (temperatura >= 16 && temperatura <= 25)
+
+    if (muyFrio) {
+        console.log("La temperatura actual es muy fría")
+    } else if (Frio) {
+        console.log("La temperatura actual es  fría")
+    } else if (Templado) {
+        console.log("La temperatura actual es templada")
+    } else {
+        console.log("La temperatura actual es caliente")
+    }
+</script>

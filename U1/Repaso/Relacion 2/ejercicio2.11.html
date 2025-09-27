@@ -1,0 +1,9 @@
+<script>
+   // Pide una cantidad de segundos y conviértela a horas, minutos y segundos.
+   let segundos = Number(prompt("Introduce una cantidad de segundos"))
+   let segMin = parseInt(segundos / 60)
+   let minHoras = parseInt(segMin / 60)
+   let segTotales = segundos % 60
+
+   console.log(minHoras + " |" + segMin + " |" + segTotales)     
+</script>

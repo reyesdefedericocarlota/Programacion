@@ -1,0 +1,20 @@
+<script>
+    //Pide dos números y una operación (+, -, *, /) e imprime el resultado correspondiente.
+    let numero1 = Number(prompt("Introduce un número"))
+    let numero2 = Number(prompt("Introduce un número"))
+    let operacion = prompt("Introduce un simbolo (+, -, *, /) para realizar la operación:")
+
+    if (operacion == "+") {
+        let suma = numero1 + numero2
+        console.log(suma)
+    } else if (operacion == "-") {
+        let resta = numero1 - numero2
+        console.log(resta)
+    } else if (operacion == "*") {
+        let multiplicacion = numero1 * numero2
+        console.log(multiplicacion)
+    } else {
+        let division = numero1 / numero2
+        console.log(division)
+    }
+</script>

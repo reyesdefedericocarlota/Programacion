@@ -1,0 +1,6 @@
+<script>
+    //1.Adivina el Año de Nacimiento: Pide al usuario su edad y calcula en qué año nació.
+    let edad = Number(prompt("Dime tu edad:"))
+    let año = 2025
+    console.log(año - edad)
+</script>

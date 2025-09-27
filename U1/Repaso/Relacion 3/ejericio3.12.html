@@ -1,0 +1,17 @@
+<script>
+   //Pide al usuario las longitudes de los tres lados de un triángulo e indica si es equilátero, isósceles o escaleno.
+   let longitud1 = Number(prompt("Introduce la longitud del primer lado:"))
+   let longitud2 = Number(prompt("Introduce la longitud del segundo lado:"))
+   let longitud3 = Number(prompt("Introduce la longitud del tercer lado:"))
+
+   let equilatero = (longitud1 == longitud2 && longitud1 == longitud3)
+   let escaleno = (longitud1 != longitud2 && longitud1 != longitud3 && longitud2 != longitud3)
+
+   if (equilatero) {
+      console.log("El triángulo es equilátero")
+   } else if (escaleno) {
+      console.log("El triángulo es escaleno")
+   } else {
+      console.log("El triángulo es isosceles")
+   }
+</script>
