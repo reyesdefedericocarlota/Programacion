@@ -1,7 +1,7 @@
 <script>
     //9.Pide un número de dos cifras e imprime la suma de sus dígitos. Si el número introducido no es de dos cifras, se debe avisar al usuario.
     let numero = Number(prompt("Introduce un número de dos cifras"))
-    let numDosCifras = numero >= 10 && numero <= 99
+    let numDosCifras = (numero >= 10 && numero <= 99)
 
     if (numDosCifras) {
         let digito1 = parseInt(numero / 10)
