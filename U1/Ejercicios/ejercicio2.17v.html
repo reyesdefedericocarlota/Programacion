@@ -3,17 +3,16 @@
 
     let llamadaMin = Number(prompt("Introduzca la duración de la llamada en minutos:"))
     let mensaje = ""
+    let precio = 0
 
     if (llamadaMin <= 3) {
         mensaje = "La llamada es gratuita"
     } else if (llamadaMin <= 10) {
-        let precio = (llamadaMin - 3) * 0.5
+        precio = (llamadaMin - 3) * 0.5
         mensaje = "La llamada cuesta: " + precio + "€"
     } else {
-        let precio3a10 = (10 - 3) * 0.5 // La llamada de 3 a 10 minutos son 7min que en total costarían 3.5€ 
-        let precioExtra = (llamadaMin - 10) * 0.3
-        let precioTotal = precio3a10 + precioExtra
-        mensaje = "La llamada cuesta: " + precioTotal + "€"
+        precio = ((10 - 3) * 0.5) + ((llamadaMin - 10) * 0.3) // La primera operación corresponde a los min desde el 3 hasta el 10 cuyo precio es de 0.5€/min
+        mensaje = "La llamada cuesta: " + precio + "€"
     }
     console.log(mensaje)
 </script>

@@ -3,12 +3,14 @@
 
     let promedio = Number(prompt("Introduce tu promedio:"))
     let ingreso = Number(prompt("Introduce tus ingresos:"))
+    let mensaje = ""
 
     if (promedio >= 8 && ingreso < 20000) {
-        console.log("Recibe la beca completa")
+        mensaje = "Recibe la beca completa"
     } else if (promedio >= 8 && ingreso >= 20000) {
-        console.log("Recibe una beca parcial")
+        mensaje = "Recibe una beca parcial"
     } else {
-        console.log("No recibe beca")
+        mensaje = "No recibe beca"
     }
+    console.log(mensaje)
 </script>
