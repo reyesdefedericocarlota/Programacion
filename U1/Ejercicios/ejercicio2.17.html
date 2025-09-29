@@ -1,0 +1,17 @@
+<script>
+    //Pide al usuario la duración de una llamada (en minutos) y calcula el coste total según estas reglas:
+
+    let llamadaMin = parseInt(prompt("Introduzca la duración de la llamada en minutos:"))
+
+    if (llamadaMin <= 3) {
+        console.log("La llamada es gratuita")
+    } else if (llamadaMin <= 10) {
+        let llamadaTramo2 = (llamadaMin - 3) * 0.5
+        console.log("La llamada cuesta: " + llamada1)
+    } else {
+        let llamada3a10 = 3.5 // La llamada de 3 a 10 minutos son 7min que en total costarían 3.5€ 
+        let llamadaTramo3 = (llamadaMin - 10) * 0.3
+        let precioLlamada = llamada3a10 + llamadaTramo3
+        console.log("La llamada cuesta: " + precioLlamada)
+    }
+</script>

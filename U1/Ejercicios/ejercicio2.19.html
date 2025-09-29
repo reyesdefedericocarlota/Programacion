@@ -1,0 +1,17 @@
+<script>
+    //Pide al usuario el tiempo que estuvo estacionado (en horas) y calcula el coste:
+
+    let tiempoEstacionado = Number(prompt("Introduce cuántas horas estuvoi estacionado:"))
+
+    if (tiempoEstacionado <= 2) {
+        let costeTramo = tiempoEstacionado * 5
+        console.log("El precio a pagar es de " + costeTramo + "€")
+    } else if (tiempoEstacionado <= 5) {
+        let costeTramo = tiempoEstacionado * 4
+        console.log("El precio a pagar es de " + costeTramo + "€")
+    } else {
+        const tiempo5 = 20 // Hasta las 5 horas siempre será a 4€/h por lo tanto 5*4=20
+        let costeTramo = ((tiempoEstacionado - 5) * 3) + 20
+        console.log("El precio a pagar es de " + costeTramo + "€")
+    }
+</script>

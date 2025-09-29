@@ -1,0 +1,14 @@
+<script>
+    //Solicita el promedio académico del estudiante y su ingreso familiar anual:
+
+    let promedio = Number(prompt("Introduce tu promedio:"))
+    let ingreso = Number(prompt("Introduce tus ingresos:"))
+
+    if (promedio >= 8 && ingreso < 20000) {
+        console.log("Recibe la beca completa")
+    } else if (promedio >= 8 && ingreso >= 20000) {
+        console.log("Recibe una beca parcial")
+    } else {
+        console.log("No recibe beca")
+    }
+</script>

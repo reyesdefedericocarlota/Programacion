@@ -2,7 +2,7 @@
     //Solicita el valor de un ángulo y determina si es:
 
     let angulo = Number(prompt("Introduce el valor del ángulo"))
-    let agudo = (angulo < 90)
+    let agudo = (angulo > 0 && angulo < 90)
     let recto = (angulo == 90)
     let obtuso = (angulo > 90 && angulo < 180)
     let llano = (angulo == 180)
@@ -16,6 +16,6 @@
     } else if (llano) {
         console.log("Es un ángulo llano")
     } else {
-        console.log("No es agudo, ni recto, ni obtuso, ni llano")
+        console.log("Ángulo no contemplado en esta aplicación")
     }
 </script>
