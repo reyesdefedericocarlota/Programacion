@@ -1,0 +1,15 @@
+<script>
+    //Pide a dos jugadores que ingresen "piedra", "papel" o "tijera" y determina el ganador según las reglas del juego.
+
+    let jugador1 = prompt("Introduce piedra, papel o tijera")
+    let jugador2 = prompt("Introduce piedra, papel o tijera")
+
+    if (jugador1 == "tijera" && jugador2 == "piedra" || jugador1 == "papel" && jugador2 == "tijera" || jugador1 == "piedra" && jugador2 == "papel") {
+        console.log("Gana jugador dos")
+    } else if (jugador1 == "piedra" && jugador2 == "tijera" || jugador1 == "tijera" && jugador2 == "papel" || jugador1 == "papel" && jugador2 == "piedra") {
+        console.log("Gana jugador uno")
+    } else {
+        console.log("Es empate")
+    }
+
+</script>

@@ -10,16 +10,16 @@
     let obesidad = IMC >= 30
 
     if (peso <= 0 || altura <= 0) {
-        console.log("el valor introducido es erróneo")
+        console.log("El valor introducido es erróneo")
     } else {
         if (bajoPeso) {
+            console.log("Su IMC es de " + IMC.toFixed(2) + " se encuentra en el rango de bajo peso")
         } else if (pesoNormal) {
+            console.log("Su IMC es de " + IMC.toFixed(2) + " se encuentra en el rango de peso normal")
         } else if (sobrePeso) {
+            console.log("Su IMC es de " + IMC.toFixed(2) + " se encuentra en el rango de sobrepeso")
         } else {
+            console.log("Su IMC es de " + IMC.toFixed(2) + " se encuentra en el rango de obesidad")
         }
-    
     }
-
-
-
 </script>
