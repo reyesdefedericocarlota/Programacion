@@ -9,10 +9,10 @@
         mensaje = "La llamada es gratuita"
     } else if (llamadaMin <= 10) {
         precio = (llamadaMin - 3) * 0.5
-        mensaje = "La llamada cuesta: " + precio + "€"
+        mensaje = "La llamada cuesta: " + precio.toFixed(2) + "€"
     } else {
         precio = ((10 - 3) * 0.5) + ((llamadaMin - 10) * 0.3) // La primera operación corresponde a los min desde el 3 hasta el 10 cuyo precio es de 0.5€/min
-        mensaje = "La llamada cuesta: " + precio + "€"
+        mensaje = "La llamada cuesta: " + precio.toFixed(2) + "€"
     }
     console.log(mensaje)
 </script>

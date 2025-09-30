@@ -1,0 +1,25 @@
+<script>
+    //Pide el peso y la altura del usuario para calcular el IMC, luego clasifica en:
+
+    let peso = Number(prompt("Introduce tu peso en kg:"))
+    let altura = Number(prompt("Introduce tu altura en metros:"))
+    let IMC = peso / altura ** 2
+    let bajoPeso = IMC < 18.5
+    let pesoNormal = IMC >= 18.5 && IMC <= 24.9
+    let sobrePeso = IMC >= 25 && IMC <= 29.9
+    let obesidad = IMC >= 30
+
+    if (peso <= 0 || altura <= 0) {
+        console.log("el valor introducido es erróneo")
+    } else {
+        if (bajoPeso) {
+        } else if (pesoNormal) {
+        } else if (sobrePeso) {
+        } else {
+        }
+    
+    }
+
+
+
+</script>

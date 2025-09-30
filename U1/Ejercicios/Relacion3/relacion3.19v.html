@@ -1,0 +1,27 @@
+<script>
+    let tiempoEstacionado = Number(prompt("Introduce cuántas horas estuvo estacionado:"))
+    let costeTramo = 0
+    const PRECIO_TRAMO_1 = 5
+    const PRECIO_TRAMO_2 = 4
+    const PRECIO_TRAMO_3 = 3
+    let tramo1 = tiempoEstacionado <= 0
+    let tramo2 = tiempoEstacionado <= 2
+    let tramo3 = tiempoEstacionado <= 5
+    let mensaje = ""
+
+    if (tramo1) {
+        mensaje = "El valor introducido no es válido"
+    } else if (tramo2) {
+        costeTramo = tiempoEstacionado * PRECIO_TRAMO_1
+        mensaje = "El precio a pagar es de " + costeTramo + "€"
+    } else {
+        if (tramo3) {
+            costeTramo = tiempoEstacionado * PRECIO_TRAMO_2
+        } else {
+            costeTramo = ((tiempoEstacionado - 5) * PRECIO_TRAMO_3) + (5 * PRECIO_TRAMO_2)
+        }
+        mensaje = "El precio a pagar es de " + costeTramo + "€"
+    }
+
+    console.log(mensaje)
+</script>
