@@ -7,15 +7,16 @@
     if (peso <= 0 || altura <= 0) {
         console.log("El valor introducido es erróneo")
     } else {
-          let IMC = Number ((peso / altura ** 2).toFixed(2))
-        if (IMC < 18.5) {
-            console.log("Su IMC es de " + IMC + " se encuentra en el rango de bajo peso")
-        } else if (IMC >= 18.5 && IMC <= 24.9) {
-            console.log("Su IMC es de " + IMC + " se encuentra en el rango de peso normal")
-        } else if (IMC >= 25 && IMC <= 29.9) {
-            console.log("Su IMC es de " + IMC + " se encuentra en el rango de sobrepeso")
+          let imc = Number ((peso / altura ** 2).toFixed(2))
+          console.log("Tu IMC es: " + imc)
+        if (imc < 18.5) {
+            console.log("Bajo peso")
+        } else if ( imc < 24.9) {
+            console.log("Peso normal")
+        } else if (imc < 29.9) {
+            console.log("Sobrepeso")
         } else {
-            console.log("Su IMC es de " + IMC + " se encuentra en el rango de obesidad")
+            console.log("Obesidad")
         }
     }
 </script>
