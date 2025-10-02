@@ -1,0 +1,19 @@
+<script>
+    //Escribe un programa que pida al usuario un número entero positivo y muestre la tabla de multiplicar de ese número (del 1 al 10) usando un bucle for
+
+    let numero = parseInt(prompt("Introduce un número: "))
+
+    if (numero < 0) {
+        console.log("El número introducido no es válido")
+    } else {
+        let multiplicacion = 0
+        let iteracion = 0
+        for (let i = 0; i < 10; i++) {
+            iteracion = i + 1
+            multiplicacion = iteracion * numero
+            console.log(numero + " x " + iteracion + " = " + multiplicacion)
+        }
+        console.log("Fin de programa")
+    }
+
+</script>
