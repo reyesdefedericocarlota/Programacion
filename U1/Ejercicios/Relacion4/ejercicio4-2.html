@@ -1,11 +1,11 @@
 <script>
-    let numero = Number(prompt("Introduce un número del 1 al 10:"))
-    let numeroSecreto = 5
-    let intento = 0
+    let numeroSecreto = prompt("Introduce el número secreto:")
+    let intento = prompt("Averigua el número")
 
-    while (numero != 5) {
-        intentos += 1
-        console.log("Intenta de nuevo")
+    while (intento != numeroSecreto) {
+        console.log("Número incorrecto")
+        intento = prompt("Averigua el número")
+
     }
     console.log("¡Correcto! Has adivinado el número.")
 </script>
