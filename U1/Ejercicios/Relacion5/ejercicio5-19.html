@@ -1,0 +1,12 @@
+<script>
+    //Solicitar dos números enteros. Mostrar el siguiente número múltiplo del primer número introducido, a partir del segundo número introducido.
+    
+    let numero1 = Number(prompt("Introduce un número:"))
+    let numero2 = Number(prompt("Introduce un número:"))
+    numero2++
+
+    while (numero2 % numero1 != 0){
+        numero2++
+    }
+    console.log(numero2)
+</script>
