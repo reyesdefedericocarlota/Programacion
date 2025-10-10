@@ -2,10 +2,24 @@
     //Solicitar un número entero. Calcular si el número introducido es primo o no, y si no lo es, calcular el siguiente número primo.
 
     let numeroEntero = parseInt(prompt("Introduce un número entero:"))
-    
+    let contador = 2
+    let mensaje = ""
+    let esPrimo = false
 
-    while () {
-        numeroEntero++
+    while (!esPrimo) {
+
+        while (numeroEntero % contador != 0) {
+            contador++
+        }
+        if (numeroEntero == contador) {
+            mensaje = "El número " + numeroEntero + " es primo"
+            esPrimo = true
+            
+        } else {
+            mensaje = "El número " + numeroEntero + " no es primo"
+            numeroEntero++
+        }
     }
-    console.log(numeroEntero)
+    console.log(mensaje)
+
 </script>

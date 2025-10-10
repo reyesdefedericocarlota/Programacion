@@ -3,13 +3,16 @@
     //Esto significa que no tenga ningún divisor aparte de sí mismo y el 1.
 
     let numeroEntero = parseInt(prompt("Introduce un número entero:"))
-    let divisor = 1
-    let mensaje = ""
+    let contador = 2
+    let mensaje = "El número " + numeroEntero
 
-    while (numeroEntero % divisor == 0) {
-        divisor++
-        mensaje = "El número " + numeroEntero + " no es primo"
-      
+    while (numeroEntero % contador != 0) {
+        contador++
+    }
+    if (numeroEntero == contador) {
+        mensaje += " es primo"
+    } else {
+        mensaje += " no es primo"
     }
     console.log(mensaje)
 </script>
