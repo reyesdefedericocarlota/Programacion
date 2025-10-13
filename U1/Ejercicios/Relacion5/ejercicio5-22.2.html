@@ -1,0 +1,15 @@
+<script>
+    // Pedimos el tamaño de la pirámide
+    let numero = Number(prompt("Introduce un número:"))
+
+
+    for (let i = numero; i > 0; i--) { // Bucle exterior: controla las filas (desde el número hasta 1)
+
+        let fila = "" // Creamos una variable vacía para construir cada línea
+
+        for (let j = 0; j < i; j++) {   // Bucle interior: añade los asteriscos necesarios
+            fila += "*"
+        }
+        console.log(fila)
+    }
+</script>

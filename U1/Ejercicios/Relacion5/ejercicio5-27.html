@@ -1,0 +1,23 @@
+<script>
+    //Solicitar un número entero. Dibujar una pirámide con tantas filas como indique el número.
+    //1
+    //12
+    //123
+    //1234
+    //12345
+
+    let numero = parseInt(prompt("Introduce un número entero:"))
+
+
+    for (i = 1; i <= numero; i++) {
+        
+        let linea = ""
+
+        for (j = 0; j < i; j++) {
+            linea += j + 1
+
+        }
+        console.log(linea)
+    }
+
+</script>
