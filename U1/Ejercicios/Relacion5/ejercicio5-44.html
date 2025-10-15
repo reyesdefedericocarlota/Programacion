@@ -1,4 +1,17 @@
 <script>
-    //Solicitar un número entero. Calcular todos los primos menores que dicho número.
-    
+    //Solicitar un número entero. Multiplicar todos los dígitos del número.
+
+    let numeroEntero = prompt("Introduce un número entero")
+
+    // Cuenta los caracteres de un string: 5432 = 4
+    let contador = numeroEntero.length
+    let multiplicacion = 1
+
+    for (i = 0; i < contador; i++) {
+
+        // Sirve para obtener cada dígito según su posición: i=0 ⮕ 5 i=1 ⮕ 4 i=2 ⮕ 3 i=3 ⮕ 2, como queremos multiplicarlos tenemos que poner el parseInt
+        multiplicacion *= parseInt(numeroEntero.charAt(i))
+    }
+    console.log("La multiplicación de los dígitos del número " + numeroEntero + " es " + multiplicacion)
+
 </script>
