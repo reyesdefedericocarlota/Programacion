@@ -1,0 +1,22 @@
+<script>
+    //Solicitar un número entero. Calcular todos los primos menores que dicho número.
+
+    let numeroEntero = parseInt(prompt("Introduce un número entero:"))
+    let contador = 2
+    let mensaje = "El número " + numeroEntero
+    let esPrimo = false
+
+    while (!esPrimo) {
+
+        while (numeroEntero % contador != 0) {
+            contador++
+        }
+        if (numeroEntero == contador) {
+            mensaje += " es primo"
+        } else {
+            mensaje += " no es primo"
+        }
+    }
+    console.log(mensaje)
+
+</script>

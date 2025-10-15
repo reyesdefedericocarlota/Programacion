@@ -1,5 +1,14 @@
 <script>
     //9. Sumar los dígitos de un número de dos cifras: pide un número de dos cifras e imprime la suma de sus dígitos. Si el número introducido no es de dos cifras, se debe avisar al usuario.
-    let numero = Number (prompt("Introduce un número de dos cifras "))
-    
+    let numero = Number(prompt("Introduce un número de dos cifras "))
+    let primerDigito = parseInt(numero / 10)
+    let segundoDigito = parseInt(numero % 10)
+
+    if (numero >= 10 && numero <= 99) {
+        let suma = primerDigito + segundoDigito
+        console.log("La suma de los dígitos del número " + numero + " es " + suma)
+    } else {
+        console.log("El número introducido no es de dos cifras")
+    }
+
 </script>

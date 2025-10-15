@@ -1,0 +1,10 @@
+<script>
+    //Solicitar una palabra. Solicitar otra palabra hasta que la segunda palabra coincida con la palabra inicial.
+    let palabraInicial = prompt("Introduce la primera palabra")
+    let segundaPalabra = ""
+
+    while (segundaPalabra.toLowerCase() != palabraInicial.toLowerCase()) {
+        segundaPalabra = prompt("Introduce una palabra")
+    }
+    console.log("Fin del bucle")
+</script>

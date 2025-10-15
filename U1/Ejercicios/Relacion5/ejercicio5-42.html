@@ -1,0 +1,20 @@
+<script>
+    //Solicitar un número entero. Calcular todos los factoriales hasta dicho número.
+
+    let numeroEntero = Number(prompt("Introduce un número:"))
+    let multiplicacion = 1
+
+    if (numeroEntero == 0) {
+        console.log("El factorial de 0 es 1")
+    } else {
+
+        for (i = 1; i <= numeroEntero; i++) {
+            multiplicacion = 1
+            for (j = 1; j <= i; j++) {
+                multiplicacion *= j
+            }
+            console.log("El factorial de " + i + " es " + multiplicacion)
+        }
+    }
+
+</script>
