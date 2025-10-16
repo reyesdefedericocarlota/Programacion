@@ -21,7 +21,13 @@
             alumnosSuspensos++
         }
         calificacion = Number(prompt("Introduce la calificacion del alumno " + numeroAlumno))
-
     }
+    promedio = sumatorio / (numeroAlumno - 1)
+
+    console.log("Hay " + alumnosAprobados + " alumnos aprobados y " +
+        alumnosSuspensos + " alumnos suspensos");
+
+    console.log("La calificación media es " + promedio);
+
 
 </script>
