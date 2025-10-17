@@ -14,12 +14,29 @@
 
     //Precio por cabeza: 21€
 
-    let producto = 1
+    let producto = 0
     let precioProducto = -1
+    let numeroPersonas = 0
+    let propina = 0
+    let totalSinPropina = 0
+    let totalPropina = 0
+    let precioPersona = 0
+
 
     while (precioProducto != 0) {
         producto++
-        precioProducto = Number
-
+        precioProducto = Number(prompt("Precio del producto " + producto + ":"))
+        totalSinPropina += precioProducto
     }
+    console.log("Total sin propina: " + totalSinPropina + "€")
+
+    numeroPersonas = Number(prompt("¿Cúantas personas sois?:"))
+    propina = Number(prompt("¿Cuánta propina quieres dejar?:"))
+
+    totalPropina = totalSinPropina * (propina / 100) + totalSinPropina
+    console.log("Total con propina: " + totalPropina + "€")
+
+    precioPersona = totalPropina / numeroPersonas
+    console.log("Precio por cabeza: " + precioPersona + "€")
+
 </script>

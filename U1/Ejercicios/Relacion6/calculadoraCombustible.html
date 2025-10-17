@@ -1,0 +1,41 @@
+<script>
+    //Calculadora de combustible. El programa debe pedir una cantidad de litros inicial. un precio por litro y un consumo e ir calculando el precio de cada viaje (pidiendo los kilometros) y el combustible restante
+    //Introduce el combustible inicial: 50
+    //Precio del litro de combustible: 1.45
+    //Consumo cada 100km: 5.6
+
+    //Introduce los kilómetros del viaje 1: 50
+    //Precio del viaje: 4.06€
+    //Combustible restante: 47.2 litros
+
+    //Introduce los kilómetros del viaje 2: 200
+    //Precio del viaje: 16.24€
+    //Combustible restante: 36 litros
+
+    //Introduce los kilómetros del viaje 3: 1000
+    //¡Combustible insuficiente!
+
+    let combustible = Number(prompt("Introduce el combustible inicial: "))
+    let precioLitro = Number(prompt("Precio del litro de combustible: "))
+    let consumo = Number(prompt("Consumo cada 100km:"))
+    let numeroViaje = 0
+    let kmViaje = 0
+    let precioViaje = 0
+
+    while (combustible > 0) {
+        numeroViaje++
+        kmViaje = Number(prompt("Introduce los kilómetros del viaje " + numeroViaje + ":"))
+        combustible = combustible - consumo * kmViaje / 100
+        precioViaje = (consumo * kmViaje / 100) * precioLitro
+
+        if (combustible > 0) {
+            alert("Precio del viaje: " + precioViaje + "€")
+            alert("Combustible restante: " + combustible + " litros")
+
+        } else {
+            alert("¡Combustible insuficiente!")
+
+        }
+    }
+
+</script>

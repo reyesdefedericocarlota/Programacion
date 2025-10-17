@@ -1,0 +1,40 @@
+<script>
+let combustibleDisponible
+let precioLitro
+let consumo100km
+
+let numeroViaje = 1
+let kilometrosViaje
+let precioViaje
+let combustibleConsumido
+
+combustibleDisponible = prompt("Introduce el combustible inicial:")
+combustibleDisponible = Number(combustibleDisponible)
+
+precioLitro = prompt("Precio del litro de combustible:")
+precioLitro = Number(precioLitro)
+
+consumo100km = prompt("Consumo cada 100km:")
+consumo100km = Number(consumo100km)
+
+while (combustibleDisponible > 0) {
+
+    kilometrosViaje = prompt("Introduce los kilómetros del viaje " + numeroViaje + ":")
+    
+    combustibleConsumido = kilometrosViaje * consumo100km / 100
+
+    if (combustibleConsumido < combustibleDisponible) {
+
+        precioViaje = combustibleConsumido * precioLitro
+        combustibleDisponible -= combustibleConsumido
+
+        alert("Precio del viaje: " + precioViaje)
+        alert("Combustible restante: " + combustibleDisponible)
+
+        numeroViaje++
+
+    }else{
+        alert("¡Combustible insuficiente!")
+    }   
+}
+</script>∫
