@@ -1,0 +1,59 @@
+<script>
+    //1. ¡Rayo McQueen en boxes!
+    // Crea un programa que simule el paso por boxes de N coches.El programa pedirá el nombre del coche y el tiempo que ha tardado en el pit stop.Finaliza cuando se introduzca "FIN" como nombre.
+
+    // Al final, muestra:
+
+    // El coche más rápido
+    // El número total de coches
+    // El tiempo promedio
+    // Ejemplo:
+    // Nombre del coche 1: Rayo
+    // Tiempo en boxes: 5.4
+    // Nombre del coche 2: Mate
+    // Tiempo en boxes: 7.1
+    // Nombre del coche 3: Luigi
+    // Tiempo en boxes: 4.9
+    // Nombre del coche 4: FIN
+
+    // Total de coches: 3
+    // Tiempo medio: 5.8 segundos
+    // El coche más rápido fue Luigi con 4.9 segundos
+
+
+    //Creo las variables
+    let nombreCoche = ""
+    let tiempoCoche = 0
+    let numeroCoches = 0
+    let promedioTiempo = 0
+    let contador = 0
+    let sumatorio = 0
+    let nombreDelMasRapido = ""
+    let tiempoDelMasRapido = 0
+
+    //Creo un bucle while
+    while (nombreCoche != "FIN") {
+        nombreCoche = prompt("Introduce el nombre del coche")
+        if (nombreCoche != "FIN") {
+            tiempoCoche = Number(prompt("Introduce el tiempo que el coche estuvo en el pit stop"))
+            contador++
+            console.log("Nombre del coche " + contador + ": " + nombreCoche)
+            console.log("Tiempo en boxes: " + tiempoCoche)
+
+            numeroCoches = contador
+            sumatorio += tiempoCoche
+
+            tiempoDelMasRapido = tiempoCoche
+            if (tiempoDelMasRapido < tiempoCoche) {
+                tiempoDelMasRapido = tiempoCoche
+
+            }
+        }
+    }
+    promedioTiempo = sumatorio / numeroCoches
+    console.log("Total de coches: " + numeroCoches)
+    console.log("Tiempo medio: " + promedioTiempo + " segundos")
+    console.log("El coche más rápido fue Luigi con " + tiempoDelMasRapido + " segundos")
+
+
+</script>

@@ -1,0 +1,66 @@
+<script>
+    //Crea un programa que pida al usuario un número y un dígito. El programa debe contar cuántas veces aparece dicho dígito en el número indicado. Además, debe validar que el numero sea postivo y el dígito sea una cifra. El programa termina cuando el usuario teclea "SALIR"
+
+    // Introduce el número: 124548
+    // Introduce el dígito: 4
+    // El dígito 4 aparece 2 veces en el número 124548
+
+    // Introduce el número: -58
+    // ¡Número incorrecto!
+
+    // Introduce el número: 5855
+    // Introduce el dígito: 58
+    // ¡Dígito incorrecto!
+    // Introduce el dígito: 5
+    // El dígito 5 aparece 3 veces en el número 5855
+
+    // Introduce el número: SALIR
+
+    let numeroUsuario
+    let digito
+    let contador = 0
+    let resto
+    let cifrasRestantes
+
+    while (numeroUsuario != "SALIR" && digito != "SALIR") {
+        numeroUsuario = prompt("Introduce un número")
+
+        if (numeroUsuario != "SALIR") {
+            numeroUsuario = Number(numeroUsuario)
+
+            if (numeroUsuario >= 0) {
+                digito = prompt("Introduce un digito")
+
+                if (digito != "SALIR") {
+                    digito = Number(digito)
+
+                    if (digito >= 0 && digito <= 9) {
+                        cifrasRestantes = numeroUsuario
+
+                        while (cifrasRestantes != 0) {
+                            resto = cifrasRestantes % 10
+
+
+                            if (resto == digito) {
+                                contador++
+                                cifrasRestantes = parseInt(cifrasRestantes / 10)
+                            } else {
+                                cifrasRestantes = parseInt(cifrasRestantes / 10)
+                            }
+                        } alert("El dígito " + digito + " aparece " + contador + " veces en el número " + numeroUsuario)
+                    } else {
+                        alert(" ¡Dígito incorrecto!")
+                    }
+                }
+            } else {
+                alert("¡Número incorrecto!")
+
+
+            }
+
+        }
+
+    }
+
+
+</script>

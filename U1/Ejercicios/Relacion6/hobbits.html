@@ -1,0 +1,64 @@
+<script>
+    //Crea tres Hobbits: Introduce, solicitándolo por pantalla, el nombre y la edad de tres hobbits.
+
+    // Crea una variable booleana para cada hobbit en la que almacenes true o false dependiendo de si cada uno de nuestros Hobbits puedeRepetir o no.
+
+    // Menor de edad: ¿Sabéis que los hobbits cumplen la mayoría de edad a los 33 años? Si alguno de nuestros Hobbits tiene menos de 33 años, automáticamente puede repetir. ¡Están en edad de crecimiento!
+
+    // Segunda oportunidad: Suma la edad de los hobbits y decide quién puede repetir:
+    // Si la suma de las edades es múltiplo de 2, el primer hobbit puede repetir.
+    // Si la suma de las edades es múltiplo de 3, el segundo hobbit puede repetir.
+    // Si la suma de las edades es múltiplo de 5, el tercer hobbit puede repetir.
+    // Por ejemplo: Si la suma de las edades fuera 60 años, los tres pueden repetir porque 60 es múltiplo de 2, 3 y 5.
+    // ¿Qué ha pasado al final? Escribe por pantalla qué hobbits puede repetir y cuáles no.
+
+    // [EXTRA] Repartir: Solo nos quedan dos platos de comida extra, así que toca decidir:
+    // Si los tres hobbits pueden repetir imprime "Toca repartir la comida"
+    // Si ningún hobbit puede repetir imprime "Va a sobrar comida"
+    // Si pueden uno o dos hobbits imprime "¡A comer!"
+
+    //Declaro variables
+    let nombreHobbit1 = prompt("Introduce el nombre del primer hobbit:")
+    let nombreHobbit2 = prompt("Introduce el nombre del segundo hobbit:")
+    let nombreHobbit3 = prompt("Introduce el nombre del tercer hobbit:")
+    let edadHobbit1 = Number(prompt("Introduce la edad del primer hobbit:"))
+    let edadHobbit2 = Number(prompt("Introduce la edad del primer hobbit:"))
+    let edadHobbit3 = Number(prompt("Introduce la edad del primer hobbit:"))
+    let sumaEdades = 0
+
+    //Suma de las edades
+    sumaEdades = edadHobbit1 + edadHobbit2 + edadHobbit3
+
+    //Creo variable booleana para cada hobbit
+    let puedeRepetirHobbit1 = (edadHobbit1 < 33 || sumaEdades % 2 == 0)
+    let puedeRepetirHobbit2 = (edadHobbit1 < 33 || sumaEdades % 3 == 0)
+    let puedeRepetirHobbit3 = (edadHobbit1 < 33 || sumaEdades % 5 == 0)
+
+    //Creo un if para cada hobbit
+    if (puedeRepetirHobbit1) {
+        console.log(nombreHobbit1 + " puede repetir")
+    } else {
+        console.log(nombreHobbit1 + " no puede repetir")
+    }
+
+    if (puedeRepetirHobbit2) {
+        console.log(nombreHobbit2 + " puede repetir")
+    } else {
+        console.log(nombreHobbit2 + " no puede repetir")
+    }
+
+    if (puedeRepetirHobbit3) {
+        console.log(nombreHobbit3 + " puede repetir")
+    } else {
+        console.log(nombreHobbit3 + " no puede repetir")
+    }
+
+    if (puedeRepetirHobbit1 == true && puedeRepetirHobbit2 == true && puedeRepetirHobbit3 == true) {
+        console.log("Toca repartir la comida")
+    } else if (puedeRepetirHobbit1 == false && puedeRepetirHobbit2 == false && puedeRepetirHobbit3 == false) {
+        console.log("Va a sobrar comida")
+    } else {
+        console.log("¡A comer!")
+    }
+
+</script>

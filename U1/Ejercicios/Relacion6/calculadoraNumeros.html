@@ -15,15 +15,13 @@
     //Introduce el primer número: SALIR
 
     let numero1 = prompt("Introduce el primer número:")
-    let numero2 = ""
+    let numero2 = prompt("Introduce el segundo número:")
     let operador = ""
     let resultado = 0
 
 
-    while (numero1 != "SALIR") {
+    while (numero1 != "SALIR" && numero2 != "SALIR" && operador != "SALIR") {
 
-
-        numero2 = prompt("Introduce el segundo número:")
         operador = prompt("Introduce la operación:")
 
 
@@ -52,10 +50,11 @@
             alert("El resultado de " + numero1 + " / " + numero2 + " es " + resultado)
 
         } else {
-            console.log("El operador introducido es incorrecto")
+            alert("El operador introducido es incorrecto")
 
         }
         numero1 = prompt("Introduce el primer número:")
+        numero2 = prompt("Introduce el segundo número:")
 
     }
 </script>

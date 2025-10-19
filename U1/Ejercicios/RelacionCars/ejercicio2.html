@@ -1,0 +1,27 @@
+<script>
+    //Simula el repostaje de varios coches. Cada coche tiene un tanque de 60 litros y reposta hasta llenarlo. El programa debe preguntar cuántos litros echa cada vez y detenerse cuando el tanque está lleno.
+
+    // Muestra cuántas veces ha repostado y el total gastado (precio/litro: 1.25€)
+    // Ejemplo:
+    // Repostaje 1: 20
+    // Repostaje 2: 30
+    // Repostaje 3: 10
+
+    // ¡Depósito lleno!
+    // Total de repostajes: 3
+    // Total gastado: 75€
+
+    let litros = 0
+    let repostaje = 0
+    const MAXLITROS = 60
+
+    while(litros <= MAXLITROS){
+        litros = Number(prompt("¿Cuántos litros quiere echar?: "))
+        repostaje++
+        console.log("Repostaje " + repostaje + ": " + litros)
+        contador += repostaje
+    } 
+    console.log("¡Depósito lleno!")
+    console.log("Total de repostajes: " + contador)
+    
+</script>
