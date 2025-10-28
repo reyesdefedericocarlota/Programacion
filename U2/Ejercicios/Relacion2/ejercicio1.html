@@ -11,27 +11,57 @@
     let diasSemana = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
     let cantidadDias = diasSemana.length
     let temperaturasSemana = []
+    let opciones = ""
     let temperaturaMáx = 0
+    let diaMax = ""
+    let temperaturaMin = 0
+    let diaMin = ""
+    let sumaTemperatura = 0
+    let temperaturaPromedio = 0
 
 
     for (i = 0; i < cantidadDias; i++) {
-        temperaturasSemana.push(prompt("Introduce la temperatura del " + diasSemana[i]))
+        temperaturasSemana.push(Number(prompt("Introduce la temperatura del " + diasSemana[i])))
 
     }
     opciones = prompt("Elige una de las siguientes opciones: \n1 = Mostrar la temperatura más alta registrada \n2 = Mostrar la temperatura más baja registrada \n3 = Calcular la temperatura promedio de la semana \n4 = Salir del programa.")
-    if (opciones == 1) {
-        for (i = 0; i < cantidadDias; i++) {
+
+    while (opciones != "4") {
+        if (opciones == "1") {
             temperaturaMáx = temperaturasSemana[0]
-            temperaturaMáx = temperaturasSemana[i]
+            diaMax = diasSemana[0]
+            for (i = 0; i < cantidadDias; i++) {
 
-            if (temperaturasSemana[i] > temperaturaMáx) {
-                temperaturaMáx = temperaturasSemana[i]
+                if (temperaturasSemana[i] > temperaturaMáx) {
+                    temperaturaMáx = temperaturasSemana[i]
+                    diaMax = diasSemana[i]
+
+                }
+            } console.log("La temperatura más alta registrada es la del: " + diaMax)
+            opciones = prompt("Elige una de las siguientes opciones: \n1 = Mostrar la temperatura más alta registrada \n2 = Mostrar la temperatura más baja registrada \n3 = Calcular la temperatura promedio de la semana \n4 = Salir del programa.")
+        } else if (opciones == "2") {
+            temperaturaMin = temperaturasSemana[0]
+            diaMin = diasSemana[0]
+            for (i = 0; i < cantidadDias; i++) {
+
+                if (temperaturasSemana[i] < temperaturaMin) {
+                    temperaturaMin = temperaturasSemana[i]
+                    diaMin = diasSemana[i]
+
+                }
+            } console.log("La temperatura más baja registrada es la del: " + diaMin)
+            opciones = prompt("Elige una de las siguientes opciones: \n1 = Mostrar la temperatura más alta registrada \n2 = Mostrar la temperatura más baja registrada \n3 = Calcular la temperatura promedio de la semana \n4 = Salir del programa.")
+        } else if (opciones == "3") {
+            for (i = 0; i < cantidadDias; i++) {
+                sumaTemperatura += temperaturasSemana[i]
             }
-            console.log()
-
-
+            temperaturaPromedio = sumaTemperatura / cantidadDias
+            console.log("La temperatura promedio es: " + temperaturaPromedio.toFixed(2))
+            opciones = prompt("Elige una de las siguientes opciones: \n1 = Mostrar la temperatura más alta registrada \n2 = Mostrar la temperatura más baja registrada \n3 = Calcular la temperatura promedio de la semana \n4 = Salir del programa.")
+        } else {
+            alert("Introduzca un número válido")
+            opciones = prompt("Elige una de las siguientes opciones: \n1 = Mostrar la temperatura más alta registrada \n2 = Mostrar la temperatura más baja registrada \n3 = Calcular la temperatura promedio de la semana \n4 = Salir del programa.")
         }
-    }
-
+    } console.log("Ha salido del programa")
 
 </script>
