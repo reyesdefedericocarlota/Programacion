@@ -5,12 +5,12 @@
     //Imprime el array invertido.
 
     let letras = ["a", "b", "c", "d"]
-    letras.pop()
-    letras.pop()
-    letras.pop()
-    letras.pop()
-    letras.push("d", "c", "b", "a")
+    let cantidadLetras = letras.length
+    let invertido = []
 
-    console.log(letras)
+    for (i = 0; i < cantidadLetras; i++) {
+        invertido.push(letras.pop())
+    }
 
+    console.log(invertido)
 </script>
