@@ -37,7 +37,7 @@
                     diaMax = diasSemana[i]
 
                 }
-            } console.log("La temperatura más alta registrada es la del: " + diaMax)
+            } console.log("La temperatura más alta registrada es la del: " + diaMax + " que es: " + temperaturaMáx)
             opciones = prompt("Elige una de las siguientes opciones: \n1 = Mostrar la temperatura más alta registrada \n2 = Mostrar la temperatura más baja registrada \n3 = Calcular la temperatura promedio de la semana \n4 = Salir del programa.")
         } else if (opciones == "2") {
             temperaturaMin = temperaturasSemana[0]
@@ -49,7 +49,7 @@
                     diaMin = diasSemana[i]
 
                 }
-            } console.log("La temperatura más baja registrada es la del: " + diaMin)
+            } console.log("La temperatura más baja registrada es la del: " + diaMin + " que es: " + temperaturaMin)
             opciones = prompt("Elige una de las siguientes opciones: \n1 = Mostrar la temperatura más alta registrada \n2 = Mostrar la temperatura más baja registrada \n3 = Calcular la temperatura promedio de la semana \n4 = Salir del programa.")
         } else if (opciones == "3") {
             for (i = 0; i < cantidadDias; i++) {
