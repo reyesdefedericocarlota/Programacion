@@ -1,0 +1,70 @@
+<script>
+    //4. Gestión de Inventario de una Librería
+    //Escribe un programa que permita al usuario gestionar el inventario de una librería. El programa debe usar dos arrays: uno para almacenar los títulos de los libros y otro para almacenar las cantidades disponibles de cada libro. El usuario debe poder realizar las siguientes acciones a través de un menú:
+
+    // 1.Añadir un nuevo libro al inventario (con su título y cantidad).
+    // 2.Actualizar la cantidad de un libro existente.
+    // 3.Ver el inventario completo (título y cantidad de cada libro).
+    // 4.Salir del programa.
+    //El programa debe actualizar el inventario según las acciones del usuario y seguir ejecutándose hasta que se elija la opción de salir.
+
+    let tituloLibros = []
+    let cantidadLibros = []
+    let solicitudTitulo = ""
+    let solicitudCantidad = 0
+
+
+    let opciones = prompt("Elige una de las siguientes opciones: \n1 = Añadir un nuevo libro al inventario (con su título y cantidad). \n2 = Actualizar la cantidad de un libro existente.\n3 = Ver el inventario completo (título y cantidad de cada libro). \n4 = Salir del programa.")
+
+    while (opciones != "1" && opciones != "2" && opciones != "3" && opciones != "4") {
+        opciones = prompt("Elige una de las siguientes opciones: \n1 = Añadir un nuevo libro al inventario (con su título y cantidad). \n2 = Actualizar la cantidad de un libro existente.\n3 = Ver el inventario completo (título y cantidad de cada libro). \n4 = Salir del programa.")
+    }
+
+    while (opciones != "4") {
+
+        if (opciones == "1") {
+
+            solicitudTitulo = prompt("Introduce el título del libro que desea añadir:")
+            solicitudCantidad = Number(prompt("Introduce la cantidad de libros disponibles:"))
+
+            while (solicitudCantidad <= 0) {
+                solicitudCantidad = Number(prompt("Introduce la cantidad de libros disponibles:"))
+            }
+            tituloLibros.push(solicitudTitulo)
+            cantidadLibros.push(solicitudCantidad)
+
+        } else if (opciones == "2") {
+
+            solicitudTitulo = prompt("Introduce el título del libro del que desea cambiar la cantidad:")
+
+            for (i = 0; i < tituloLibros.length; i++) {
+
+                if (solicitudTitulo == tituloLibros[i]) {
+
+                    cantidadLibros[i] = Number(prompt("Introduce la nueva cantidad de libros disponibles:"))
+
+                    while (solicitudCantidad <= 0) {
+                        solicitudCantidad = Number(prompt("Introduce la nueva cantidad de libros disponibles:"))
+                    }
+
+                }
+            }
+        } else {
+
+            for (i = 0; i < tituloLibros.length; i++) {
+
+                console.log("Título: " + tituloLibros[i] + " Cantidad: " + cantidadLibros[i])
+            }
+        }
+        opciones = prompt("Elige una de las siguientes opciones: \n1 = Añadir un nuevo libro al inventario (con su título y cantidad). \n2 = Actualizar la cantidad de un libro existente.\n3 = Ver el inventario completo (título y cantidad de cada libro). \n4 = Salir del programa.")
+
+        while (opciones != "1" && opciones != "2" && opciones != "3" && opciones != "4") {
+            opciones = prompt("Elige una de las siguientes opciones: \n1 = Añadir un nuevo libro al inventario (con su título y cantidad). \n2 = Actualizar la cantidad de un libro existente.\n3 = Ver el inventario completo (título y cantidad de cada libro). \n4 = Salir del programa.")
+        }
+    }
+
+
+
+
+
+</script>

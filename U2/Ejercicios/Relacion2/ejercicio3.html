@@ -8,5 +8,49 @@
     // 4.El programa debe buscar el precio del producto seleccionado, multiplicarlo por la cantidad y añadirlo al total de la compra.
     // 5.Si el usuario escribe "FIN", el programa debe finalizar la compra, mostrando un resumen con todos los productos adquiridos, sus cantidades, y el costo total a pagar.
 
-    
+    let productos = ["ACEITUNAS", "LECHE", "ARROZ", "MACARRONES", "GALLETAS", "LENTEJAS", "GARBANZOS", "MAÍZ", "NARANJAS", "ALUBIAS"]
+    let precios = [2, 1, 2, 3, 4, 3.5, 4, 2.5, 4, 4.5]
+    let precio = 0
+    let solicitudCantidad = 0
+    let productosAdquiridos = []
+    let cantidadProductos = []
+    let productoDisponible = false
+
+    let solicitudProducto = prompt("Introduzca el nombre del producto que desea comprar").toUpperCase()
+
+    while (solicitudProducto != "FIN") {
+
+        productoDisponible = false
+
+        solicitudCantidad = Number(prompt("Introduce la cantidad que desea comprar"))
+        while (solicitudCantidad <= 0) {
+            solicitudCantidad = Number(prompt("Introduce la cantidad que desea comprar"))
+        }
+
+        for (i = 0; i < productos.length; i++) {
+
+            if (solicitudProducto == productos[i]) {
+                precio += precios[i] * solicitudCantidad
+                productoDisponible = true
+
+            }
+        }
+
+        if (productoDisponible) {
+            productosAdquiridos.push(solicitudProducto)
+            cantidadProductos.push(solicitudCantidad)
+        } else {
+            alert("PRODUCTO NO DISPONIBLE, COMPRA NO REGISTRADA")
+        }
+
+        solicitudProducto = prompt("Introduzca el nombre del producto que desea comprar").toUpperCase()
+
+    }
+    console.log("En total debe pagar " + precio + "€")
+
+    for (i = 0; i < productosAdquiridos.length; i++) {
+
+        console.log(productosAdquiridos[i] + " - " + cantidadProductos[i])
+    }
+
 </script>
