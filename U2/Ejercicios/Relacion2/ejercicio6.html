@@ -1,0 +1,78 @@
+<script>
+    //6. Sistema de Seguimiento de Tareas
+    //Desarrolla un programa que permita hacer un seguimiento de las tareas diarias de un equipo. El programa debe usar dos arrays: uno para almacenar los nombres de las tareas y otro para almacenar el estado de cada tarea (true = completada y false = pendiente). El menú del programa debe ofrecer las siguientes opciones:
+
+    // 1.Añadir una nueva tarea.
+    // 2.Marcar una tarea como completada.
+    // 3.Ver la lista de tareas pendientes.
+    // 4.Ver la lista de tareas completadas.
+    // 5.Salir del programa.
+
+    let nombresTarea = []
+    let estadoTarea = []
+    let tarea = ""
+    let tareasPendientes = []
+    let tareasCompletadas = []
+
+    let opciones = prompt("Elige una de las siguientes opciones: \n1 = Añadir una nueva tarea. \n2 = Marcar una tarea como completada. \n3 = Ver la lista de tareas pendientes. \n4 = Ver la lista de tareas completadas. \n5 = Salir del programa.")
+    while (opciones != "1" && opciones != "2" && opciones != "3" && opciones != "4" && opciones != "5") {
+        opciones = prompt("Elige una de las siguientes opciones: \n1 = Añadir una nueva tarea. \n2 = Marcar una tarea como completada.\n3 = Ver la lista de tareas pendientes.\n4 = Ver la lista de tareas completadas. \n5 = Salir del programa.")
+    }
+
+    while (opciones != "5") {
+
+        if (opciones == "1") {
+
+            nombresTarea.push(tarea = prompt("Añade una tarea:"))
+            estadoTarea.push(false)
+
+
+        } else if (opciones == "2") {
+
+            tarea = prompt("Introduce el nombre de la tarea que ha completado:")
+
+            for (i = 0; i < nombresTarea.length; i++) {
+
+                if (tarea == nombresTarea[i]) {
+
+                    estadoTarea[i] = true
+
+                    console.log("Tarea: " + tarea + " - completada")
+                }
+            }
+        } else if (opciones == "3") {
+
+            tareasPendientes = []
+            for (i = 0; i < estadoTarea.length; i++) {
+
+                if (estadoTarea[i] == false) {
+                    tareasPendientes.push(nombresTarea[i])
+
+                }
+
+            }
+            console.log("Tareas pendientes: " + tareasPendientes)
+
+        } else {
+
+            tareasCompletadas = []
+            for (i = 0; i < estadoTarea.length; i++) {
+
+                if (estadoTarea[i] == true) {
+                    tareasCompletadas.push(nombresTarea[i])
+
+                }
+
+            }
+            console.log("Tareas completadas: " + tareasCompletadas)
+        }
+
+
+        opciones = prompt("Elige una de las siguientes opciones: \n1 = Añadir una nueva tarea. \n2 = Marcar una tarea como completada. \n3 = Ver la lista de tareas pendientes. \n4 = Ver la lista de tareas completadas. \n5 = Salir del programa.")
+        while (opciones != "1" && opciones != "2" && opciones != "3" && opciones != "4" && opciones != "5") {
+            opciones = prompt("Elige una de las siguientes opciones: \n1 = Añadir una nueva tarea. \n2 = Marcar una tarea como completada.\n3 = Ver la lista de tareas pendientes.\n4 = Ver la lista de tareas completadas. \n5 = Salir del programa.")
+        }
+    }
+    console.log("Ha salido del programa")
+
+</script>
