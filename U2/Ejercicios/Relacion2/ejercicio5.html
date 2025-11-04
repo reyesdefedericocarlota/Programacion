@@ -1,0 +1,85 @@
+<script>
+    //5. Sistema de Registro de Calificaciones
+    // Desarrolla un programa que permita registrar y gestionar las calificaciones de los estudiantes en una clase. Usa dos arrays: uno para los nombres de los estudiantes y otro para sus calificaciones. El programa debe ofrecer al usuario un menú con las siguientes opciones:
+
+    // 1. Añadir un estudiante y su calificación.
+    // 2. Mostrar la calificación promedio de la clase.
+    // 3. Mostrar la calificación más alta y el nombre del estudiante correspondiente.
+    // 4. Mostrar la calificación más baja y el nombre del estudiante correspondiente.
+    // 5. Salir del programa.
+
+    let nombresEstudiante = []
+    let calificacionesEstudiante = []
+    let nombre = ""
+    let calificacion = 0
+    let sumatorio = 0
+    let promedio = 0
+    let calificacionMayor = 0
+
+    let opciones = prompt("Elige una de las siguientes opciones: \n1 = Añadir un estudiante y su calificación. \n2 = Mostrar la calificación promedio de la clase.\n3 = Mostrar la calificación más alta y el nombre del estudiante correspondiente. \n4 = Mostrar la calificación más baja y el nombre del estudiante correspondiente. \n5 = Salir del programa.")
+    while (opciones != "1" && opciones != "2" && opciones != "3" && opciones != "4" && opciones != "5") {
+        opciones = prompt("Elige una de las siguientes opciones: \n1 = Añadir un estudiante y su calificación. \n2 = Mostrar la calificación promedio de la clase.\n3 = Mostrar la calificación más alta y el nombre del estudiante correspondiente. \n4 = Mostrar la calificación más baja y el nombre del estudiante correspondiente. \n5 = Salir del programa.")
+    }
+
+    while (opciones != 5) {
+
+        if (opciones == "1") {
+            nombre = prompt("Introduce el nombre del estudiante")
+
+            calificacion = Number(prompt("Introduce la calificación de " + nombre))
+            while (calificacion < 0 || calificacion > 10) {
+                calificacion = Number(prompt("Introduce la calificación de " + nombre))
+            }
+
+            nombresEstudiante.push(nombre)
+            calificacionesEstudiante.push(calificacion)
+
+        } else if (opciones == "2") {
+
+            for (i = 0; i < calificacionesEstudiante.length; i++) {
+
+                sumatorio += calificacionesEstudiante[i]
+            }
+
+            promedio = sumatorio / calificacionesEstudiante.length
+            console.log("El promedio de la clase es de " + promedio)
+
+        } else if (opciones == "3") {
+
+            calificacionMayor = calificacionesEstudiante[0]
+            nombre = nombresEstudiante[0]
+
+            for (i = 0; i < calificacionesEstudiante.length; i++) {
+
+                if (calificacionMayor < calificacionesEstudiante[i]) {
+
+                    calificacionMayor = calificacionesEstudiante[i]
+                    nombre = nombresEstudiante[i]
+                }
+            }
+            console.log(nombre + " ha obtenido la calificación más alta que es " + calificacionMayor)
+
+
+        } else if (opciones == "4") {
+
+            calificacionMenor = calificacionesEstudiante[0]
+            nombre = nombresEstudiante[0]
+
+            for (i = 0; i < calificacionesEstudiante.length; i++) {
+
+                if (calificacionMenor > calificacionesEstudiante[i]) {
+
+                    calificacionMenor = calificacionesEstudiante[i]
+                    nombre = nombresEstudiante[i]
+                }
+            }
+            console.log(nombre + " ha obtenido la calificación más baja que es " + calificacionMenor)
+        }
+
+        opciones = prompt("Elige una de las siguientes opciones: \n1 = Añadir un estudiante y su calificación. \n2 = Mostrar la calificación promedio de la clase.\n3 = Mostrar la calificación más alta y el nombre del estudiante correspondiente. \n4 = Mostrar la calificación más baja y el nombre del estudiante correspondiente. \n5 = Salir del programa.")
+        while (opciones != "1" && opciones != "2" && opciones != "3" && opciones != "4" && opciones != "5") {
+            opciones = prompt("Elige una de las siguientes opciones: \n1 = Añadir un estudiante y su calificación. \n2 = Mostrar la calificación promedio de la clase.\n3 = Mostrar la calificación más alta y el nombre del estudiante correspondiente. \n4 = Mostrar la calificación más baja y el nombre del estudiante correspondiente. \n5 = Salir del programa.")
+        }
+    }
+    console.log("Ha salido del programa")
+</script>
