@@ -1,0 +1,115 @@
+<script>
+    //7. Control de Gastos Mensuales
+    // Escribe un programa que permita al usuario llevar un control de sus gastos mensuales. Usa dos arrays: uno para los nombres de los gastos (por ejemplo, "comida", "transporte", etc.) y otro para las cantidades gastadas en cada categoría. El programa debe mostrar un menú con las siguientes opciones:
+
+    // 1.Añadir un nuevo gasto (nombre y cantidad).
+    // 2.Ver el total de gastos hasta el momento.
+    // 3.Ver los gastos más altos y más bajos del mes.
+    // 4.Ver el promedio de gasto diario (suponiendo un mes de 30 días).
+    // 5.Salir del programa.
+
+    let nombresGastos = []
+    let cantidadGastos = []
+    let cantidadGasto = 0
+    let totalGastos = 0
+    let gastoMayor = 0
+    let nombreGastoMayor = ""
+    let gastoMenor = 0
+    let nombreGastoMenor = ""
+    let gastosOrdenados = []
+    let promedioGasto = 0
+
+
+    let opciones = prompt("Elige una de las siguientes opciones: \n1 = Añadir un nuevo gasto (nombre y cantidad). \n2 = Ver el total de gastos hasta el momento.\n3 = Ver los gastos más altos y más bajos del mes. \n4 = Ver el promedio de gasto diario (suponiendo un mes de 30 días). \n5 = Salir del programa.")
+    while (opciones != "1" && opciones != "2" && opciones != "3" && opciones != "4" && opciones != "5") {
+        opciones = prompt("Elige una de las siguientes opciones: \n1 = Añadir un nuevo gasto (nombre y cantidad). \n2 = Ver el total de gastos hasta el momento.\n3 = Ver los gastos más altos y más bajos del mes. \n4 = Ver el promedio de gasto diario (suponiendo un mes de 30 días). \n5 = Salir del programa.")
+    }
+
+    while (opciones != "5") {
+
+        if (opciones == "1") {
+
+            nombresGastos.push(prompt("Introduce el nombre del gasto"))
+
+            cantidadGasto = Number(prompt("Introduce la cantidad gastada"))
+            while (cantidadGasto <= 0) {
+                cantidadGasto = Number(prompt("Introduce la cantidad gastada"))
+            }
+
+            cantidadGastos.push(cantidadGasto)
+
+        } else if (opciones == "2") {
+
+            if (cantidadGastos.length == 0) {
+                console.log("No hay gastos registrados todavía.");
+            } else {
+
+                totalGastos = 0
+
+                for (i = 0; i < cantidadGastos.length; i++) {
+
+                    totalGastos += cantidadGastos[i]
+                }
+                console.log("El total de gastos hasta el momento es de " + totalGastos + "€")
+            }
+        } else if (opciones == "3") {
+
+            if (cantidadGastos.length == 0) {
+                console.log("No hay gastos registrados todavía.");
+            } else {
+
+                gastoMayor = cantidadGastos[0]
+                nombreGastoMayor = nombresGastos[0]
+
+                for (i = 0; i < cantidadGastos.length; i++) {
+
+                    if (cantidadGastos[i] > gastoMayor) {
+
+                        gastoMayor = cantidadGastos[i]
+                        nombreGastoMayor = nombresGastos[i]
+                    }
+                }
+                console.log("Gasto más alto: " + nombreGastoMayor + " - " + gastoMayor + "€")
+
+                gastoMenor = cantidadGastos[0]
+                nombreGastoMenor = nombresGastos[0]
+
+                for (i = 0; i < cantidadGastos.length; i++) {
+
+                    if (cantidadGastos[i] < gastoMenor) {
+
+                        gastoMenor = cantidadGastos[i]
+                        nombreGastoMenor = nombresGastos[i]
+                    }
+                }
+                console.log("Gasto más bajo: " + nombreGastoMenor + " - " + gastoMenor + "€")
+
+            }
+
+        } else {
+
+            if (cantidadGastos.length == 0) {
+                console.log("No hay gastos registrados todavía.");
+            } else {
+                
+                totalGastos = 0
+
+                for (i = 0; i < cantidadGastos.length; i++) {
+
+                    totalGastos += cantidadGastos[i]
+                }
+                promedioGasto = totalGastos / 30
+                console.log("El promedio de gasto diario es de " + promedioGasto.toFixed(2) + "€")
+
+            }
+        }
+
+        opciones = prompt("Elige una de las siguientes opciones: \n1 = Añadir un nuevo gasto (nombre y cantidad). \n2 = Ver el total de gastos hasta el momento.\n3 = Ver los gastos más altos y más bajos del mes. \n4 = Ver el promedio de gasto diario (suponiendo un mes de 30 días). \n5 = Salir del programa.")
+        while (opciones != "1" && opciones != "2" && opciones != "3" && opciones != "4" && opciones != "5") {
+            opciones = prompt("Elige una de las siguientes opciones: \n1 = Añadir un nuevo gasto (nombre y cantidad). \n2 = Ver el total de gastos hasta el momento.\n3 = Ver los gastos más altos y más bajos del mes. \n4 = Ver el promedio de gasto diario (suponiendo un mes de 30 días). \n5 = Salir del programa.")
+        }
+
+    }
+    console.log("Ha salido del programa")
+
+</script>

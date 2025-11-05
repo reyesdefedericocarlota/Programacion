@@ -1,0 +1,96 @@
+<script>
+    //8. Gestión de Reservas de un Restaurante
+    // Escribe un programa para gestionar las reservas en un restaurante. Usa dos arrays: uno para los nombres de los clientes que han hecho una reserva y otro para almacenar el número de personas que cada cliente ha reservado. El programa debe mostrar un menú con las siguientes opciones:
+
+    // 1.Añadir una nueva reserva (nombre del cliente y número de personas).
+    // 2.Ver la lista de reservas actuales.
+    // 3.Calcular el total de personas reservadas para ese día.
+    // 4.Cancelar una reserva existente (por nombre del cliente).
+    // 5.Salir del programa.
+
+    let nombresClientes = []
+    let personasReservas = []
+    let personaReserva = 0
+    let totalPersonas = 0
+    let nombreCliente = ""
+    let nombreEncontrado = false
+
+    let opciones = prompt("Elige una de las siguientes opciones: \n1 = Añadir una nueva reserva (nombre del cliente y número de personas).\n2 = Ver la lista de reservas actuales.\n3 = Calcular el total de personas reservadas para ese día.. \n4 = Cancelar una reserva existente (por nombre del cliente). \n5 = Salir del programa.")
+    while (opciones != "1" && opciones != "2" && opciones != "3" && opciones != "4" && opciones != "5") {
+        opciones = prompt("Elige una de las siguientes opciones: \n1 = Añadir una nueva reserva (nombre del cliente y número de personas).\n2 = Ver la lista de reservas actuales.\n3 = Calcular el total de personas reservadas para ese día.. \n4 = Cancelar una reserva existente (por nombre del cliente). \n5 = Salir del programa.")
+    }
+
+    while (opciones != "5") {
+
+        if (opciones == "1") {
+
+            nombresClientes.push(prompt("Introduzca el nombre del cliente"))
+
+            personaReserva = Number(prompt("Introduce el número de personas que van a comer"))
+            while (personaReserva <= 0 || personaReserva % 1 != 0) {
+                personaReserva = Number(prompt("Por favor, introduce un número entero positivo:"));
+            }
+
+            personasReservas.push(personaReserva)
+
+        } else if (opciones == "2") {
+
+            if (personasReservas.length == 0) {
+                console.log("No hay reservas registradas todavía.")
+            } else {
+
+                for (i = 0; i < nombresClientes.length; i++) {
+
+                    console.log("Nombre: " + nombresClientes[i] + " - " + personasReservas[i] + " personas")
+
+                }
+
+            }
+
+        } else if (opciones == "3") {
+
+            if (personasReservas.length == 0) {
+                console.log("No hay reservas registradas todavía.")
+            } else {
+
+                totalPersonas = 0
+
+                for (let persona of personasReservas) {
+
+                    totalPersonas += persona
+                }
+                console.log("El total de personas reservadas es " + totalPersonas)
+            }
+
+        } else {
+
+            if (personasReservas.length == 0) {
+                console.log("No hay reservas registradas todavía.")
+            } else {
+
+                nombreEncontrado = false
+                nombreCliente = prompt("Introduzca el nombre del cliente que desea cancelar la reserva")
+
+                for (i = 0; i < nombresClientes.length; i++) {
+
+                    if (nombreCliente == nombresClientes[i]) {
+
+                        nombresClientes[i] = nombresClientes[nombresClientes.length - 1]
+                        personasReservas[i] = personasReservas[personasReservas.length - 1]
+                        nombresClientes.pop()
+                        personasReservas.pop()
+                        nombreEncontrado = true
+                    }
+                }
+                if (!nombreEncontrado) {
+                    console.log("No existe ninguna reserva a nombre de " + nombreCliente + ".")
+                }
+            }
+        }
+
+        opciones = prompt("Elige una de las siguientes opciones: \n1 = Añadir una nueva reserva (nombre del cliente y número de personas).\n2 = Ver la lista de reservas actuales.\n3 = Calcular el total de personas reservadas para ese día.. \n4 = Cancelar una reserva existente (por nombre del cliente). \n5 = Salir del programa.")
+        while (opciones != "1" && opciones != "2" && opciones != "3" && opciones != "4" && opciones != "5") {
+            opciones = prompt("Elige una de las siguientes opciones: \n1 = Añadir una nueva reserva (nombre del cliente y número de personas).\n2 = Ver la lista de reservas actuales.\n3 = Calcular el total de personas reservadas para ese día.. \n4 = Cancelar una reserva existente (por nombre del cliente). \n5 = Salir del programa.")
+        }
+    }
+</script>
