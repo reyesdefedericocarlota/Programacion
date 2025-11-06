@@ -1,0 +1,46 @@
+<script>
+
+    //Crea un programa que reciba un número y devuelva un array con los primos menores que ese número
+
+    function primosMenoresCotaSuperior(cotaSuperior) {
+
+        let primosMenores = []
+
+        for (i = 1; i < cotaSuperior; i++) {
+
+            if (esPrimo(i)) {
+
+                primosMenores.push(i)
+            }
+        }
+
+        return primosMenores
+    }
+
+    function esPrimo(comprobarNumeroPrimo) {
+
+        let contador = 2
+        let esPrimo = false
+
+        while (comprobarNumeroPrimo % contador != 0) {
+            contador++
+        }
+        if (comprobarNumeroPrimo == contador) {
+            esPrimo = true
+        }
+
+        return esPrimo
+    }
+
+
+
+
+
+
+    //----------------------------------MAIN------------
+
+    let comprobarNumeroPrimo = Number(prompt("Introduce un número para comprobar si es primo"))
+    console.log(esPrimo(comprobarNumeroPrimo))
+
+
+</script>
