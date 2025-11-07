@@ -1,0 +1,24 @@
+<script>
+    //Crea una función llamada mayor que reciba dos números y devuelva el mayor de los dos.
+
+    function mayor(numero1, numero2) {
+
+        let mensaje = ""
+
+        if (numero1 > numero2) {
+            mensaje = numero1 + " es el mayor." 
+
+        } else {
+            mensaje = numero2 + " es el mayor." 
+        }
+
+        return mensaje
+    }
+
+    //----------------------------------MAIN------------
+
+    let numero1 = Number(prompt("Introduce el primer número:"))
+    let numero2 = Number(prompt("Introduce el segundo número:"))
+
+    console.log(mayor(numero1, numero2))
+</script>

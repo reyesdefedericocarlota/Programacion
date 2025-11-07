@@ -1,0 +1,26 @@
+<script>
+    //Crea una función llamada sumarArray que reciba un array de números y devuelva la suma de todos sus elementos.
+
+    function sumarArray(numeros) {
+
+        let suma = 0
+
+        for (numero of numeros) {
+            suma += numero
+        }
+
+        return suma
+    }
+
+    //----------------------------------MAIN------------
+
+    let numeros = []
+    let numeroAleatorio = Math.floor(Math.random() * 10) + 1
+
+    for (i = 0; i < 3; i++) {
+        numeros.push(numeroAleatorio = Math.floor(Math.random() * 10) + 1)
+    }
+
+    console.log(sumarArray(numeros))
+
+</script>
