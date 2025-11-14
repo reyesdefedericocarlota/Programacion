@@ -1,0 +1,20 @@
+<script>
+    // 2. **Filtra Palabras por Letra**
+    //  - Tienes un array de palabras y necesitas quedarte solo con aquellas que empiezan con una letra específica. Pide la letra como parámetro y devuelve un nuevo array con las palabras que comienzan con esa letra.
+    //  - Ejemplo: `["Alice", "Bob", "Amy", "David"]` con la letra `"A"` debería devolver `["Alice", "Amy"]`.
+
+    let nombres = ["Alice", "Bob", "Amy", "David"]
+    let letra = "A"
+    let nombre = ""
+    let nombresA = []
+
+    for (i = 0; i < nombres.length; i++) {
+        nombre = nombres[i]
+        if (nombre.startsWith("A")) {
+            nombresA.push(nombre)
+        }
+
+    }
+    console.log(nombresA)
+
+</script>

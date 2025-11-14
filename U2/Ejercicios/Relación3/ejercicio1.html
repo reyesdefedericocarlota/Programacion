@@ -4,8 +4,18 @@
     // Ejemplo: ["apple", "banana", "kiwi", "watermelon"] debería devolver "watermelon".
 
     let frutas = ["apple", "banana", "kiwi", "watermelon"]
-    
-    for (let fruta of frutas) {
-        fruta.length
+    let palabraMasLarga = 0
+    let nombrePalabra = ""
+
+    palabraMasLarga = frutas[0].length
+    nombrePalabra = frutas[0]
+
+    for (i = 0; i < frutas.length; i++) {
+
+        if (palabraMasLarga < frutas[i].length) {
+            palabraMasLarga = frutas[i].length
+            nombrePalabra = frutas[i]
+        }
     }
+    console.log("La palabra más larga es: " + nombrePalabra)
 </script>
