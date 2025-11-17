@@ -1,0 +1,65 @@
+<script>
+    //1. Puntuaciones en una partida de bolos
+    // Escribe un programa que registre las puntuaciones de un jugador en 10 tiradas de bolos.
+    // El programa debe permitir:
+
+    // Guardar las 10 puntuaciones en un array.
+    // Mostrar un menú con opciones:
+    // Mostrar la puntuación más alta.
+    // Mostrar la puntuación más baja.
+    // Calcular la puntuación total.
+    // Calcular la media.
+    // Salir.
+
+    let puntuaciones = []
+    let opciones = ""
+    let puntuacionMax = 0
+    let puntuacionMin = 0
+    let puntuacionTotal = 0
+    let puntuacionMedia = 0
+    const TOTALPUNTUACIONES = 10
+
+    for (i = 0; i < TOTALPUNTUACIONES; i++) {
+        puntuaciones.push(Math.floor(Math.random() * 11))
+    }
+
+    while (opciones != "5") {
+        opciones = prompt("Elige una de las siguientes opciones: \n1 = Mostrar la puntuación más alta. \n2 = Mostrar la puntuación más baja. \n3 = Calcular la puntuación total. \n4 = Calcular la media. \n5 = Salir")
+        while (opciones != "1" && opciones != "2" && opciones != "3" && opciones != "4" && opciones != "5") {
+            opciones = prompt("Elige una de las siguientes opciones: \n1 = Mostrar la puntuación más alta. \n2 = Mostrar la puntuación más baja. \n3 = Calcular la puntuación total. \n4 = Calcular la media. \n5 = Salir")
+        }
+        if (opciones == "1") {
+            puntuacionMax = puntuaciones[0]
+            for (let i = 0; i < puntuaciones.length; i++) {
+                if (puntuacionMax < puntuaciones[i]) {
+                    puntuacionMax = puntuaciones[i]
+                }
+            }
+            alert("La puntuación más alta es: " + puntuacionMax)
+
+        } else if (opciones == "2") {
+            puntuacionMin = puntuaciones[0]
+            for (let i = 0; i < puntuaciones.length; i++) {
+                if (puntuacionMin > puntuaciones[i]) {
+                    puntuacionMin = puntuaciones[i]
+                }
+            }
+            alert("La puntuación más baja es: " + puntuacionMin)
+
+        } else if (opciones == "3") {
+            puntuacionTotal = 0
+            for (let puntuacion of puntuaciones) {
+                puntuacionTotal += puntuacion
+            }
+            alert("La puntuación total es " + puntuacionTotal)
+
+        } else if (opciones == "4") {
+            puntuacionTotal = 0
+            for (let puntuacion of puntuaciones) {
+                puntuacionTotal += puntuacion
+            }
+            puntuacionMedia = puntuacionTotal / TOTALPUNTUACIONES
+            alert("La puntuación media es: " + puntuacionMedia)
+        }
+    }
+</script>

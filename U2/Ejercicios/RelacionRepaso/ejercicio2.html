@@ -1,0 +1,70 @@
+<script>
+    // 2. Torneo de dados
+    // Crea dos arrays paralelos: uno con los nombres de los últimos 6 jugadores y otro con sus puntuaciones.
+    // El menú debe permitir:
+
+    // Añadir un nuevo jugador (eliminando al más antiguo).
+    // Mostrar jugadores y puntuaciones.
+    // Mostrar el jugador con mayor puntuación.
+    // Mostrar el jugador con menor puntuación.
+    // Salir.
+
+    let nombresJugadores = ["Jugador1", "Jugador2", "Jugador3", "Jugador4", "Jugador5", "Jugador6"]
+    let puntuacionesJugadores = [120, 200, 150, 180, 220]
+    let nombreJugador = ""
+    let puntuacionJugador = 0
+    let puntuacionMax = 0
+    let jugadorPuntuacionMax = ""
+    let puntuacionMin = 0
+    let jugadorPuntuacionMin = ""
+    let opciones = ""
+
+    while (opciones != "5") {
+        opciones = prompt("Elige una de las siguientes opciones: \n1 = Añadir un nuevo jugador. \n2 = Mostrar jugadores y puntuaciones. \n3 = Mostrar el jugador con mayor puntuación. \n4 = Mostrar el jugador con menor puntuación. \n5 = Salir")
+        while (opciones != "1" && opciones != "2" && opciones != "3" && opciones != "4" && opciones != "5") {
+            opciones = prompt("Elige una de las siguientes opciones: \n1 = Añadir un nuevo jugador. \n2 = Mostrar jugadores y puntuaciones. \n3 = Mostrar el jugador con mayor puntuación. \n4 = Mostrar el jugador con menor puntuación. \n5 = Salir")
+        }
+        if (opciones == "1") {
+            nombresJugadores.shift()
+            puntuacionesJugadores.shift()
+
+            nombreJugador = prompt("Introduce el nombre del jugador")
+            nombresJugadores.push(nombreJugador)
+
+            puntuacionJugador = Number(prompt("Añade su puntuación"))
+            while (puntuacionJugador < 0 || puntuacionJugador > 500) {
+                puntuacionJugador = Number(prompt("Añade su puntuación"))
+            }
+            puntuacionesJugadores.push(puntuacionJugador)
+
+            alert("Nuevo jugador: " + nombreJugador + " Puntuación: " + puntuacionJugador)
+
+        } else if (opciones == "2") {
+            for (let i = 0; i < nombresJugadores.length; i++) {
+                alert(nombresJugadores[i] + " - " + puntuacionesJugadores[i])
+            }
+
+        } else if (opciones == "3") {
+            puntuacionMax = puntuacionesJugadores[0]
+            jugadorPuntuacionMax = nombresJugadores[0]
+            for (let i = 0; i < puntuacionesJugadores.length; i++) {
+                if (puntuacionMax < puntuacionesJugadores[i]) {
+                    puntuacionMax = puntuacionesJugadores[i]
+                    jugadorPuntuacionMax = nombresJugadores[i]
+                }
+            }
+            alert("La puntuación más alta la tiene : " + jugadorPuntuacionMax + " y es de: " + puntuacionMax)
+
+        } else if (opciones == "4") {
+            puntuacionMin = puntuacionesJugadores[0]
+            jugadorPuntuacionMin = nombresJugadores[0]
+            for (let i = 0; i < puntuacionesJugadores.length; i++) {
+                if (puntuacionMin > puntuacionesJugadores[i]) {
+                    puntuacionMin = puntuacionesJugadores[i]
+                    jugadorPuntuacionMin = nombresJugadores[i]
+                }
+            }
+            alert("La puntuación más baja la tiene : " + jugadorPuntuacionMin + " y es de: " + puntuacionMin)
+        }
+    }
+</script>
