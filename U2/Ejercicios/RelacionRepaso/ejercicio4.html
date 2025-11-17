@@ -1,0 +1,79 @@
+<script>
+    //  4. Buscaminas lineal
+    // Crea un array de 10 posiciones indicando si hay mina o no, y otro array para marcar posiciones descubiertas.
+    // El usuario introduce posiciones a descubrir hasta que:
+
+    // Encuentra una mina, o
+    // Descubre todas las posiciones sin mina.
+    // Al descubrir una casilla segura, debe mostrarse cuántas minas hay en sus casillas vecinas.
+
+
+    let minas = [false, true, false, false, true, false, false, false, true, false]
+    let posicionesDescubiertas = [false, false, false, false, false, false, false, false, false, false]
+    let izquierda = ""
+    let derecha = ""
+
+    let usuario = Number(prompt("Introduce una posición (0-9): "));
+    while (usuario < 0 || usuario > 9) {
+        usuario = Number(prompt("Introduce una posición válida (0-9): "));
+    }
+
+    let juegoTerminado = false
+    let todasSegurasDescubiertas = true
+
+    while (!juegoTerminado) {
+
+        // Si pisa una mina → pierde
+        if (minas[usuario] == true) {
+            console.log("¡Pisaste una mina! Has perdido.")
+            juegoTerminado = true
+        } else {
+
+            // Marcar casilla como descubierta
+            posicionesDescubiertas[usuario] = true
+
+            // Mostrar minas vecinas
+            if (usuario > 0) {
+                if (minas[usuario - 1] == true) {
+                    izquierda = "La casilla de la izquierda tiene mina"
+                } else {
+                    izquierda = "La casilla de la izquierda no tiene mina"
+                }
+            } else {
+                izquierda = "No hay casilla a la izquierda"
+            }
+
+            if (usuario < 9) {
+                if (minas[usuario + 1] == true) {
+                    derecha = "La casilla de la derecha tiene mina"
+                } else {
+                    derecha = "La casilla de la derecha no tiene mina"
+                }
+            } else {
+                derecha = "No hay casilla a la derecha"
+            }
+
+            alert("Casilla segura.\n" + izquierda + "\n" + derecha)
+
+            // Comprobar si ha descubierto todas las casillas seguras
+            todasSegurasDescubiertas = true
+
+            for (let i = 0; i < minas.length; i++) {
+                if (minas[i] == false && posicionesDescubiertas[i] == false) {
+                    todasSegurasDescubiertas = false
+                }
+            }
+
+            if (todasSegurasDescubiertas == true) {
+                console.log("¡Has descubierto todas las casillas seguras! ¡Ganaste!")
+                juegoTerminado = true
+            } else {
+                // Pedir nueva posición
+                usuario = Number(prompt("Introduce una nueva posición (0-9): "));
+                while (usuario < 0 || usuario > 9) {
+                    usuario = Number(prompt("Introduce una posición válida (0-9): "));
+                }
+            }
+        }
+    }
+</script>
