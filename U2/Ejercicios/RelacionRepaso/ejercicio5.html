@@ -1,0 +1,91 @@
+<script>
+    // 5. Gestor de rondas en un juego de dados
+    // Crea un sistema que gestione puntuaciones de varios jugadores mediante arrays.
+    // El menú debe permitir:
+
+    // Añadir jugador.
+    // Registrar ronda (sumar puntos a cada jugador).
+    // Mostrar clasificación.
+    // Mostrar jugadores por encima de la media.
+    // Reiniciar puntuaciones.
+    // Salir.
+
+    let jugadores = ["Ana", "Luis", "Marta"]
+    let puntuaciones = [12, 15, 10]
+    let opciones = ""
+    let puntuacion = 0
+    let puntuacionMax = 0
+
+    while (opciones != "6") {
+
+        opciones = prompt("Elige una de las siguientes opciones: \n1 = Añadir jugador. \n2 = Registrar ronda (sumar puntos a cada jugador). \n3 = Mostrar clasificación.. \n4 = Mostrar jugadores por encima de la media. \n5 = Reiniciar puntuaciones. \n6 = Salir")
+        while (opciones != "1" && opciones != "2" && opciones != "3" && opciones != "4" && opciones != "5" && opciones != "6") {
+            opciones = prompt("Elige una de las siguientes opciones: \n1 = Añadir jugador. \n2 = Registrar ronda. \n3 = Mostrar clasificación. \n4 = Jugadores por encima de la media. \n5 = Reiniciar puntuaciones. \n6 = Salir");
+        }
+
+        if (opciones == "1") {
+            jugadores.push(prompt("Introduce el nombre del jugador"))
+            puntuaciones.push(0)
+            alert("Jugadores: " + jugadores)
+
+        } else if (opciones == "2") {
+            for (i = 0; i < jugadores.length; i++) {
+                puntuacion = 0
+                puntuacion = puntuaciones[i] + Math.floor(Math.random() * 6) + 1
+                puntuaciones[i] = puntuacion
+                alert(jugadores[i] + " tiene " + puntuaciones[i] + " puntos")
+            }
+
+        } else if (opciones == "3") {
+            // Bucle doble para ordenar de mayor a menor
+            for (let i = 0; i < puntuaciones.length - 1; i++) {
+                for (let j = 0; j < puntuaciones.length - 1 - i; j++) {
+                    if (puntuaciones[j] < puntuaciones[j + 1]) {
+                        // Intercambiar puntuaciones
+                        let tempPuntos = puntuaciones[j];
+                        puntuaciones[j] = puntuaciones[j + 1];
+                        puntuaciones[j + 1] = tempPuntos;
+
+                        // Intercambiar nombres para mantener correspondencia
+                        let tempJugador = jugadores[j];
+                        jugadores[j] = jugadores[j + 1];
+                        jugadores[j + 1] = tempJugador;
+                    }
+                }
+            }
+
+            // Mostrar clasificación
+            for (let i = 0; i < jugadores.length; i++) {
+                alert((i + 1) + " - " + jugadores[i] + ": " + puntuaciones[i] + " puntos");
+            }
+
+        } else if (opciones == "4") {
+            // Calcular la media
+            let suma = 0;
+            for (let i = 0; i < puntuaciones.length; i++) {
+                suma += puntuaciones[i];
+            }
+            let media = suma / puntuaciones.length;
+
+            alert("La media de puntuaciones es: " + media);
+
+            // Mostrar jugadores por encima de la media
+            let mensaje = "Jugadores por encima de la media:\n";
+
+            for (let i = 0; i < jugadores.length; i++) {
+                if (puntuaciones[i] > media) {
+                    mensaje += jugadores[i] + " (" + puntuaciones[i] + " puntos)\n";
+                }
+            }
+
+            alert(mensaje)
+
+        } else if (opciones == "5") {
+            for (let i = 0; i < puntuaciones.length; i++) {
+                puntuaciones[i] = 0;
+            }
+            alert("Todas las puntuaciones han sido reiniciadas.");
+        }
+    }
+
+</script>
