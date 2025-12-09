@@ -1,0 +1,15 @@
+<script>
+    // 17. Revertir una cadena
+    // Crea una función llamada revertirCadena que reciba una cadena de texto y devuelva la misma cadena con los caracteres en orden inverso.
+
+    function revertirCadena(cadena) {
+        let cadenaInvertida = ""
+        for (let i = cadena.length - 1; i >= 0; i--) {
+            cadenaInvertida += cadena[i]
+        }
+        return cadenaInvertida
+    }
+
+    console.log(revertirCadena("hola"))
+
+</script>

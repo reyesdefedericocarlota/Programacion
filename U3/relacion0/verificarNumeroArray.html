@@ -1,0 +1,27 @@
+<script>
+    // 16. Verificar si un número está en un array
+    // Crea una función llamada verificarNumeroEnArray que reciba un número y un array, y devuelva true si el número está presente en el array o false si no lo está.
+
+    function verificarNumeroEnArray(numero, arrayNumeros) {
+        return arrayNumeros.includes(numero)
+    }
+
+    function crearArrayAleatorio0a99(tamanio) {
+        let numeros = []
+        for (let i = 0; i < tamanio; i++) {
+            numeros.push(Math.floor(Math.random() * 100))
+        }
+        return numeros
+    }
+
+    function valorAleatorio() {
+        return Math.floor(Math.random() * 100)
+    }
+
+    const TAMANIOARRAY = 8
+    valor = valorAleatorio()
+
+    numerosAleatorios = crearArrayAleatorio0a99(TAMANIOARRAY)
+    console.log(verificarNumeroEnArray(valor, numerosAleatorios))
+
+</script>

@@ -1,0 +1,17 @@
+<script>
+    // 20. Contar palabras en una cadena
+    // Crea una función llamada contarPalabrasEnCadena que reciba una cadena y devuelva el número de palabras que contiene, asumiendo que están separadas por espacios. Investiga el uso de split().
+
+    function contarPalabrasEnCadena(cadena) {
+        let frutas = cadena.split(" ")
+        let contadorPalabras = 0
+        for (let fruta of frutas) {
+            contadorPalabras++
+        }
+        return contadorPalabras
+    }
+
+    let listaDeFrutas = "manzana pera mango banana"
+    console.log(contarPalabrasEnCadena(listaDeFrutas))
+    
+</script>

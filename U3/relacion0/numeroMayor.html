@@ -1,24 +1,15 @@
 <script>
-    //Crea una función llamada mayor que reciba dos números y devuelva el mayor de los dos.
+    // 8. Encontrar el número mayor
+    // Crea una función llamada mayor que reciba dos números y devuelva el mayor de los dos.
 
     function mayor(numero1, numero2) {
-
-        let mensaje = ""
-
+        let numMayor = numero2
         if (numero1 > numero2) {
-            mensaje = numero1 + " es el mayor." 
-
-        } else {
-            mensaje = numero2 + " es el mayor." 
+            numMayor = numero1
         }
-
-        return mensaje
+        return numMayor
     }
 
-    //----------------------------------MAIN------------
-
-    let numero1 = Number(prompt("Introduce el primer número:"))
-    let numero2 = Number(prompt("Introduce el segundo número:"))
-
-    console.log(mayor(numero1, numero2))
+    console.log(mayor(10,7))
+    console.log(mayor(3,8))
 </script>

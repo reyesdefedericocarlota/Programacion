@@ -1,18 +1,10 @@
 <script>
-    //Crea una función llamada areaTriangulo que reciba la base y la altura de un triángulo y devuelva su área calculada con la fórmula (base * altura) / 2.
+    // 10. Calcular el área de un triángulo
+    // Crea una función llamada areaTriangulo que reciba la base y la altura de un triángulo y devuelva su área calculada con la fórmula (base * altura) / 2.
 
     function areaTriangulo(base, altura) {
-
-        let area = 0
-        area = (base * altura) / 2
-
-        return area
+        return (base * altura) / 2
     }
 
-    //----------------------------------MAIN------------
-
-    let base = Number(prompt("Introduce la base del triangulo"))
-    let altura = Number(prompt("Introduce el area del triangulo"))
-
-    console.log(areaTriangulo(base, altura))
+    console.log(areaTriangulo(4, 6))
 </script>

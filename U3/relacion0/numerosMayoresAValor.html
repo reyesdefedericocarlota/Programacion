@@ -1,0 +1,33 @@
+<script>
+    // 15. Filtrar números mayores a un valor
+    // Crea una función llamada filtrarNumerosMayores que reciba un array de números y un valor, y devuelva un nuevo array con los números mayores que el valor dado.
+
+    function filtrarNumerosMayores(arrayNumeros, valor) {
+        let numerosMayores = []
+        for (let numero of arrayNumeros) {
+            if (numero > valor) {
+                numerosMayores.push(numero)
+            }
+        }
+        return numerosMayores
+    }
+
+    function crearArrayAleatorio0a99(tamanio) {
+        for (let i = 0; i < tamanio; i++) {
+            numeros.push(Math.floor(Math.random() * 100))
+        }
+    }
+
+    function valorAleatorio() {
+        return Math.floor(Math.random() * 100)
+    }
+
+    let numeros = []
+    const TAMANIOARRAY = 8
+    crearArrayAleatorio0a99(TAMANIOARRAY)
+    valor1 = valorAleatorio()
+
+    console.log(numeros)
+    console.log(filtrarNumerosMayores(numeros, valor1))
+
+</script>
