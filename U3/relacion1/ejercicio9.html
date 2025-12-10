@@ -1,37 +1,30 @@
 <script>
-    // 9. Generar una Contraseña Aleatoria de Longitud Fija  
-    // Escribe una función `generarContraseña` que reciba un número `longitud` y devuelva una cadena de caracteres aleatorios (formada por letras y números) de esa longitud. Por ejemplo, si `longitud` es 8, podría devolver algo como `a7b3f2d8`. Puedes usar un array de letras y números para ir eligiendo de forma aleatoria.
-
-    function numeroOcaracter() {
-        let resultado = ''
-        let numeroCaracter = Math.floor(Math.random() * 2)
-        if (numeroCaracter == false) resultado = 'numero'
-        else resultado = 'caracter'
-
-        return resultado
-    }
+    // 9. Generar una Contraseña Aleatoria de Longitud Fija
+    // Escribe una función generarContraseña que reciba un número longitud y devuelva una cadena de caracteres aleatorios (formada por letras y números) de esa longitud. Por ejemplo, si longitud es 8, podría devolver algo como a7b3f2d8. Puedes usar un array de letras y números para ir eligiendo de forma aleatoria.
 
     function generarContraseña(longitud) {
-        let caracteres = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'ñ', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-        let numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-        let numeroAleatorio = 0
-        let caracterAleatorio = ''
-        let contraseña = []
-
-        for (i = 0; i < longitud; i++) {
-            if (numeroOcaracter() == 'numero') {
-                numeroAleatorio = Math.floor(Math.random() * numeros.length)
-                contraseña.push(numeroAleatorio)
-            } else {
-                caracterAleatorio = Math.floor(Math.random() * caracteres.length)
-                contraseña.push(caracteres[caracterAleatorio])
-            }
-
+        let contraseña = ""
+        for (let i = 0; i < longitud; i++) {
+            contraseña += caracterAleatorio()
         }
-
         return contraseña
     }
 
-    alert('Contraseña: ' + generarContraseña(7))
-    alert('Contraseña: ' + generarContraseña(5))
+    function caracterAleatorio() {
+        const ABECEDARIO = [
+            "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
+            "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
+            "u", "v", "w", "x", "y", "z"
+        ]
+        const NUMEROS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        let letraONumero = ""
+
+        if (Math.floor(Math.random() * 2)) letraONumero = ABECEDARIO[Math.floor(Math.random() * 26)]
+        else letraONumero = NUMEROS[Math.floor(Math.random() * 10)]
+
+        return letraONumero
+    }
+
+    console.log(generarContraseña(8))
+    console.log(generarContraseña(12))
 </script>

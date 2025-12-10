@@ -1,16 +1,15 @@
 <script>
-    // 8. Seleccionar un Elemento Aleatorio de una Lista  
-    // Crea una función `elementoAleatorio` que reciba un array como parámetro y devuelva un elemento aleatorio de ese array. Por ejemplo, si el array es `['a', 'b', 'c']`, la función podría devolver `b` o cualquier otro elemento del array.
+    // 8. Seleccionar un Elemento Aleatorio de una Lista
+    // Crea una función elementoAleatorio que reciba un array como parámetro y devuelva un elemento aleatorio de ese array. Por ejemplo, si el array es ['a', 'b', 'c'], la función podría devolver b o cualquier otro elemento del array.
 
-    function elementoAleatorio(array) {
-        let elementoAleatorio = Math.floor(Math.random() * array.length) + 1
-        let resultado = ""
-
-        return array[elementoAleatorio]
-
-
+    function elementoAleatorio(lista) {
+        let elemento = lista[Math.floor(Math.random() * (lista.length))]
+        return elemento
     }
 
-    let elementos = ["a", "b", "c"]
-    alert(elementoAleatorio(elementos))
+    let listaLetras = ["a", "b", "c"]
+    let listaFrutas = ["manzana", "pera", "kiwi", "melocoton", "fresa", "platano"]
+
+    console.log(elementoAleatorio(listaFrutas))
+    console.log(elementoAleatorio(listaLetras))
 </script>
