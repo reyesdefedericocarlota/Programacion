@@ -1,0 +1,152 @@
+<script>// Selecciona un décimo al azar de la lista
+    function seleccionarDecimo(lista) {
+        let indice = Math.floor(Math.random() * lista.length)
+        return lista[indice]
+    }
+
+    // Muestra el progreso del número adivinado (ej: _2_5_)
+    function mostrarProgresoNumero(arrayDigitosDecimoSecreto, digitosAdivinados) {
+        let progreso = ""
+
+        for (let i = 0; i < arrayDigitosDecimoSecreto.length; i++) {
+            let d = arrayDigitosDecimoSecreto[i]
+            if (digitosAdivinados.includes(d)) {
+                progreso += d
+            } else {
+                progreso += "_"
+            }
+        }
+        return progreso
+    }
+
+    // Comprueba si un dígito está en una lista determinada
+    function comprobarDigitoEnLista(digito, lista) {
+        return lista.includes(digito)
+    }
+
+    // Comprueba si ya se ha ganado (todos los dígitos adivinados)
+    function comprobarGanador(arrayDigitosDecimoSecreto, digitosAdivinados) {
+        for (let d of arrayDigitosDecimoSecreto) {
+            if (!digitosAdivinados.includes(d)) {
+                return false
+            }
+        }
+        return true
+    }
+
+    
+</script>
+<script>
+
+    function seleccionarDecimo(decimos) {
+        let decimo = decimos[Math.floor(Math.random() * decimos.length)];
+        return decimo;
+    }
+
+    function mostrarProgresoNumero(arrayDigitosDecimoSecreto, digitosAdivinados) {
+        let progreso = "";
+
+        for (let i = 0; i < arrayDigitosDecimoSecreto.length; i++) {
+            let numero = arrayDigitosDecimoSecreto[i];
+
+            if (digitosAdivinados.includes(numero)) {
+                progreso += numero;
+            } else {
+                progreso += "_";
+            }
+        }
+
+        return progreso;
+    }
+
+    function comprobarDigitoEnLista(numero, lista) {
+        let resultado = lista.includes(numero);
+        return resultado;
+    }
+
+    function comprobarGanador(arrayDigitosDecimoSecreto, digitosAdivinados) {
+        let ganado = true;
+
+        for (let digito of arrayDigitosDecimoSecreto) {
+            if (!digitosAdivinados.includes(digito)) {
+                ganado = false;
+                break;
+            }
+        }
+
+        return ganado;
+    }
+
+    // =============================== MAIN =============================== //
+
+    let listaDecimos = [
+        "00001", "12345", "54321", "77777", "20240", "15024",
+        "86531", "99999", "11111", "24568", "60012", "20250"
+    ];
+
+    let maxIntentos = 6;
+
+    let entrada = "";
+    let digito = "";
+    let ganador = false;
+    let intentosRestantes = maxIntentos;
+    let estadoNumeroPremiado = "";
+    let digitosAdivinados = [];
+    let digitosErroneos = [];
+
+    // Seleccionar décimo secreto
+    let decimoSecreto = seleccionarDecimo(listaDecimos);
+    let arrayDigitosDecimoSecreto = decimoSecreto.split("");
+
+    alert("🎄 ¡Bienvenido al juego del Gordo de Navidad! 🎄");
+    alert("Se ha seleccionado un décimo premiado de 5 cifras.");
+    alert("Tienes " + maxIntentos + " intentos para descubrir el número premiado.");
+
+    while (intentosRestantes > 0 && !ganador) {
+
+        alert("Progreso del décimo: " + mostrarProgresoNumero(arrayDigitosDecimoSecreto, digitosAdivinados));
+        alert("Intentos restantes: " + intentosRestantes);
+        alert("Dígitos erróneos: " + digitosErroneos.join(", "));
+
+        entrada = prompt("Introduce un dígito del 0 al 9:");
+        digito = "";
+        
+        if (entrada != null) digito = entrada.trim();
+
+        // Validación
+        if (digito.length !== 1 || isNaN(Number(digito))) {
+            alert("Entrada no válida. Debes introducir EXACTAMENTE un dígito (0-9). No pierdes intento.");
+            continue;
+        }
+
+        let digitoYaUsado =
+            comprobarDigitoEnLista(digito, digitosAdivinados) ||
+            comprobarDigitoEnLista(digito, digitosErroneos);
+
+        if (digitoYaUsado) {
+            alert("Ese dígito ya lo intentaste antes.");
+            continue;
+        }
+
+        // Procesar intento
+        if (comprobarDigitoEnLista(digito, arrayDigitosDecimoSecreto)) {
+            alert("¡Correcto! Ese dígito aparece en el décimo premiado.");
+            digitosAdivinados.push(digito);
+        } else {
+            alert("Dígito incorrecto.");
+            digitosErroneos.push(digito);
+            intentosRestantes--;
+        }
+
+        estadoNumeroPremiado = mostrarProgresoNumero(arrayDigitosDecimoSecreto, digitosAdivinados);
+        ganador = comprobarGanador(arrayDigitosDecimoSecreto, digitosAdivinados);
+    }
+
+    if (ganador) {
+        alert("🎉 ¡ENHORABUENA! Has descubierto el décimo premiado: " + decimoSecreto + " 🎉");
+    } else {
+        alert("❌ Te has quedado sin intentos.");
+        alert("El número premiado era: " + decimoSecreto);
+    }
+
+</script>

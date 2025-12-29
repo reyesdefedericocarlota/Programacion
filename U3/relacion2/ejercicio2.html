@@ -1,0 +1,25 @@
+<script>
+    // 2. Planificador de citas
+    // Haz una función que reciba cuatro horarios en formato de 24 horas (como cadenas: "19:45") correspondientes a las horas de inicio y fin de dos citas. Determina si se solapan (true) o si ambas citas son compatibles (no se solapan: false).
+
+    function aMinutos(hora) {
+        const [H, M] = hora.split(":").map(Number)
+        return H * 60 + M
+    }
+
+    function citasSolapadas(i1, f1, i2, f2) {
+        const INICIO1 = aMinutos(i1)
+        const FIN1 = aMinutos(f1)
+        const INICIO2 = aMinutos(i2)
+        const FIN2 = aMinutos(f2)
+
+        return INICIO1 < FIN2 && INICIO2 < FIN1
+    }
+
+    let seSolapan = citasSolapadas("14:00", "15:30", "11:00", "14:30")
+    let noSeSolapan = citasSolapadas("14:00", "15:30", "11:00", "13:30")
+
+    console.log(seSolapan)
+    console.log(noSeSolapan)
+
+</script>
