@@ -7,14 +7,17 @@ public class ejercicio5 {
     public static void main(String[] args) {
         // Crear objeto Scanner
         Scanner scanner = new Scanner(System.in);
+        double GRAVEDADLUNA = 0.165;
+        double pesoTierra = 0;
+        double pesoLuna = 0;
 
         // Leer datos del usuario
         System.out.println("Introduzca su peso: ");
-        double peso = scanner.nextDouble();
+        pesoTierra = scanner.nextDouble();
 
         // Calcular peso en la luna
-        double pesoLuna = peso * 0.165;
-        System.out.println("Tu peso en la Luna es: " + pesoLuna + " kg");
+        pesoLuna = pesoTierra * GRAVEDADLUNA;
+        System.out.printf("Tu peso en la Luna es:  %.2f" + pesoLuna + " kg");
 
         scanner.close();
 
