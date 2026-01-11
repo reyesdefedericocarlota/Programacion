@@ -27,12 +27,3 @@ public class ejercicio2 {
 
     }
 }
-
-// let numeroSecreto = prompt("Introduce el numero secreto")
-// let intento = prompt("Averigua el número")
-
-// while (numeroSecreto != intento) {
-// console.log("Número " + intento + " incorrecto");
-// intento = prompt("Averigua el número")
-// }
-// console.log("Has averiguado el numero");
