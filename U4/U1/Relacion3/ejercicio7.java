@@ -7,7 +7,7 @@ public class ejercicio7 {
         Scanner scanner = new Scanner(System.in);
         double numero1, numero2;
         String operador;
-       
+
         System.out.println("Introduzca el primer número");
         numero1 = scanner.nextDouble();
         System.out.println("Introduzca el segundo número");
@@ -34,4 +34,3 @@ public class ejercicio7 {
 
     }
 }
-
