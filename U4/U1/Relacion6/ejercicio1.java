@@ -30,6 +30,6 @@ public class ejercicio1 {
         double media = sumatorio / (numeroAlumno - 1);
 
         System.out.println("Hay " + alumnosAprobados + " alumnos aprobados y " + alumnosSuspensos + " alumnos suspensos.");
-        System.out.printf("La calificación media es (%.2f ", media);
+        System.out.printf("La calificación media es %.2f", media);
     }
 }
