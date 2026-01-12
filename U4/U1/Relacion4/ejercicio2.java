@@ -21,9 +21,8 @@ public class ejercicio2 {
             System.out.println("Averigua el número");
             intento = scanner.nextInt();
         }
-        System.out.println("Has averiguado el numero");
-
         scanner.close();
+        System.out.println("Has averiguado el numero");
 
     }
 }

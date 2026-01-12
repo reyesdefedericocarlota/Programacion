@@ -6,79 +6,30 @@ public class ejercicio1 {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String numero1 = "a";
-        String numero2 = "a";
-        String operacionUsuario = "a";
-        int resultadoOperacion = 0;
+        int numeroAlumno = 1;
+        int alumnosAprobados = 0, alumnosSuspensos = 0;
+        double sumatorio = 0, nota;
 
-        while (numero1 != "SALIR" && numero2 != "SALIR" && operacionUsuario != "SALIR") {
-            System.out.println("Introduzca el primer número");
-            numero1 = scanner.nextLine();
+        System.out.println("Introduce la calificacion del alumno " + numeroAlumno + ":");
+        nota = scanner.nextDouble();
 
-            System.out.println("Introduzca el primer número");
-            numero2 = scanner.nextLine();
+        while (nota != -1) {
+            sumatorio += nota;
+            numeroAlumno++;
 
-            System.out.println("Introduce la operación:");
-            operacionUsuario = scanner.nextLine();
-
-            if (numero1 != "SALIR") {
-                int convertirNumero1 = Integer.parseInt(numero1);
-
-                if (numero2 != "SALIR") {
-                    int convertirNumero2 = Integer.parseInt(numero2);
-
-                    if (operacionUsuario != "SALIR") {
-
-                        if (numero1 != "SALIR" && numero2 != "SALIR" && operacionUsuario != "SALIR") {
-                            if (operacionUsuario.equals("+")) {
-                                resultadoOperacion = (convertirNumero1 + convertirNumero2);
-                            } else if (operacionUsuario.equals("-")) {
-                                resultadoOperacion = (convertirNumero1 - convertirNumero2);
-                            } else if (operacionUsuario.equals("*")) {
-                                resultadoOperacion = (convertirNumero1 * convertirNumero2);
-                            } else if (operacionUsuario.equals("/")) {
-                                resultadoOperacion = (convertirNumero1 / convertirNumero2);
-                            }
-                            System.out.println("El resultado de " + convertirNumero1 + operacionUsuario
-                                    + convertirNumero2 + " es " + resultadoOperacion);
-                        }
-                    }
-                }
+            if (nota < 5) {
+                alumnosSuspensos++;
+            } else {
+                alumnosAprobados++;
             }
 
+            System.out.println("Introduce la calificacion del alumno " + numeroAlumno + ":");
+            nota = scanner.nextDouble();
         }
         scanner.close();
+        double media = sumatorio / (numeroAlumno - 1);
+
+        System.out.println("Hay " + alumnosAprobados + " alumnos aprobados y " + alumnosSuspensos + " alumnos suspensos.");
+        System.out.printf("La calificación media es (%.2f ", media);
     }
 }
-
-// while (numero1 != "SALIR" && numero2 != "SALIR" && operacionUsuario !=
-// "SALIR") {
-// numero1 = prompt("Introduce el primer número:")
-
-// if (numero1 != "SALIR") {
-// numero1 = Number(numero1)
-
-// numero2 = prompt("Introduce el segundo número:")
-// if (numero2 != "SALIR") {
-// numero2 = Number(numero2)
-
-// operacionUsuario = prompt("Introduce la operación:")
-
-// if (operacionUsuario != "SALIR") {
-
-// if (operacionUsuario == "+") {
-// resultadoOperacion = numero1 + numero2
-// } else if (operacionUsuario == "-") {
-// resultadoOperacion = numero1 - numero2
-// } else if (operacionUsuario == "*") {
-// resultadoOperacion = numero1 * numero2
-// } else if (operacionUsuario == "/") {
-// resultadoOperacion = numero1 / numero2
-// }
-
-// alert("El resultado de " + numero1 + operacionUsuario + numero2 + " es " +
-// resultadoOperacion)
-// }
-// }
-// }
-// }

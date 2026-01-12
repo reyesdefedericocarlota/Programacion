@@ -16,11 +16,10 @@ public class ejercicio1 {
             System.out.println("El número introducido no es válido");
         } else {
             int multiplicacion;
-            int iteracion;
-            for (int i = 0; i < 10; i++) {
-                iteracion = i + 1;
-                multiplicacion = iteracion * numero;
-                System.out.println(numero + " x " + iteracion + " = " + multiplicacion);
+            final int MAX_DIG = 10;
+            for (int i = 1; i <= MAX_DIG; i++) {
+                multiplicacion = i * numero;
+                System.out.println(numero + " x " + i + " = " + multiplicacion);
             }
         }
 
@@ -29,4 +28,3 @@ public class ejercicio1 {
 
 // Escribe un programa que pida al usuario un número entero positivo y muestre
 // la tabla de multiplicar de ese número (del 1 al 10) usando un bucle for
-
