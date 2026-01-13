@@ -6,51 +6,58 @@ public class ejercicio6 {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String numero1 = "a";
-        String numero2 = "a";
-        String operacionUsuario = "a";
-        int resultadoOperacion = 0;
 
-        while (numero1 != "SALIR" && numero2 != "SALIR" && operacionUsuario != "SALIR") {
-            System.out.println("Introduzca el primer número");
+        String numero1, numero2, operacion;
+        int n1, n2, resultado = 0;
+        boolean salir = false;
+
+        while (!salir) {
+
+            System.out.println("Introduzca el primer número (o SALIR):");
             numero1 = scanner.nextLine();
 
-            if (numero1 != "SALIR") {
-                int convertirNumero1 = Integer.parseInt(numero1);
+            if (numero1.equals("SALIR")) {
+                salir = true;
+            } else {
 
-                System.out.println("Introduzca el segundo número");
+                System.out.println("Introduzca el segundo número (o SALIR):");
                 numero2 = scanner.nextLine();
 
-                if (numero2 != "SALIR") {
-                    int convertirNumero2 = Integer.parseInt(numero2);
+                if (numero2.equals("SALIR")) {
+                    salir = true;
+                } else {
 
-                    if (operacionUsuario != "SALIR") {
+                    System.out.println("Introduce la operación (+, -, *, /) o SALIR:");
+                    operacion = scanner.nextLine();
 
-                        System.out.println("Introduce la operación:");
-                        operacionUsuario = scanner.nextLine();
+                    if (operacion.equals("SALIR")) {
+                        salir = true;
+                    } else {
 
-                        if (numero1 != "SALIR" && numero2 != "SALIR" && operacionUsuario != "SALIR") {
-                            if (operacionUsuario.equals("+")) {
-                                resultadoOperacion = (convertirNumero1 + convertirNumero2);
-                            } else if (operacionUsuario.equals("-")) {
-                                resultadoOperacion = (convertirNumero1 - convertirNumero2);
-                            } else if (operacionUsuario.equals("*")) {
-                                resultadoOperacion = (convertirNumero1 * convertirNumero2);
-                            } else if (operacionUsuario.equals("/")) {
-                                resultadoOperacion = (convertirNumero1 / convertirNumero2);
-                            }
-                            System.out.println("El resultado de " + convertirNumero1 + operacionUsuario
-                                    + convertirNumero2 + " es " + resultadoOperacion);
+                        n1 = Integer.parseInt(numero1);
+                        n2 = Integer.parseInt(numero2);
+
+                        if (operacion.equals("+")) {
+                            resultado = n1 + n2;
+                        } else if (operacion.equals("-")) {
+                            resultado = n1 - n2;
+                        } else if (operacion.equals("*")) {
+                            resultado = n1 * n2;
+                        } else if (operacion.equals("/")) {
+                            resultado = n1 / n2;
+                        } else {
+                            System.out.println("Operación no válida");
                         }
+
+                        System.out.println("El resultado de " + n1 + operacion + n2 + " es " + resultado);
                     }
                 }
             }
-
         }
         scanner.close();
+        System.out.println("Programa finalizado.");
     }
 }
-
 // while (numero1 != "SALIR" && numero2 != "SALIR" && operacionUsuario !=
 // "SALIR") {
 // numero1 = prompt("Introduce el primer número:")
