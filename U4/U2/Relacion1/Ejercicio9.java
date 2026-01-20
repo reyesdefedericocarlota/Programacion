@@ -10,11 +10,13 @@ public class Ejercicio9 {
 
     public static void main(String[] args) {
         ArrayList<String> cola = new ArrayList<String>();
-        cola.add("cliente1");
-        cola.add("cliente2");
-        cola.add("cliente3");
+        final int TAMANIOCOLA = 3;
+        for (int i = 1; i <= TAMANIOCOLA; i++) {
+            cola.add("cliente" + i);
 
-        System.out.println(cola.remove(0));
+        }
+        String clienteAtendido = cola.remove(0);
+        System.out.println(clienteAtendido);
         System.out.println(cola);
     }
 
