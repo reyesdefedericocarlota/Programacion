@@ -5,76 +5,80 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Ejercicio6 {
+    public static void mostrarTarea(ArrayList<String> listaTareas, ArrayList<Boolean> tareasCompletadas,
+            boolean mostrarCompletadas) {
+        ArrayList<String> tareasMostrar = new ArrayList<>();
 
-    public static String elegirOpcion(Scanner scanner) {
-        
-        System.out.println(
-                "Elige una de las siguientes opciones:\n" +
-                        "1 = Añadir una nueva tarea.\n" +
-                        "2 = Marcar una tarea como completada.\n" +
-                        "3 = Ver tareas pendientes.\n" +
-                        "4 = Ver tareas completadas.\n" +
-                        "5 = Salir.");
-        return scanner.next();
+        for (int i = 0; i < tareasCompletadas.size(); i++) {
+            if (tareasCompletadas.get(i) == mostrarCompletadas) {
+                tareasMostrar.add(listaTareas.get(i));
+            }
+        }
+        if (tareasMostrar.isEmpty()) {
+            mostrarMensaje("No hay tareas a mostrar.");
+        } else {
+            mostrarMensaje(String.join("-", tareasMostrar));
+        }
+    }
+
+    public static void mostrarMensaje(String mensaje) {
+        System.out.println(mensaje);
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<String> tareas = new ArrayList<String>(Arrays.asList("tarea1", "tarea2", "tarea3"));
-        ArrayList<Boolean> completadas = new ArrayList<Boolean>(Arrays.asList(false, true, false));
+        // Arrays
+        ArrayList<String> tareas = new ArrayList<>(Arrays.asList("tarea1", "tarea2", "tarea3"));
+        ArrayList<Boolean> completadas = new ArrayList<>(Arrays.asList(false, true, false));
 
-        String opciones;
+        int opcion = 0;
+        // Opcion1
+        String nuevaTarea;
+        // Opcion2
+        String tareaBuscar;
+        Boolean tareaEncontrada;
 
         do {
-            opciones = elegirOpcion(scanner);
+            do {
+                try {
+                    System.out.println("1. Añadir tarea.\n" + //
+                            "2. Marca completada.\n" + //
+                            "3. Ver pendientes.\n" + //
+                            "4. Ver completadas.\n" + //
+                            "5. Salir.");
+                    opcion = Integer.parseInt(scanner.nextLine());
 
-            if (opciones.equals("1")) {
-                String nuevaTarea = "";
-                System.out.println("Nueva tarea:");
-                nuevaTarea = scanner.next();
+                } catch (NumberFormatException e) {
+                    System.out.println("Error introduce un numero: ");
+                    opcion = -1;
+                }
+
+            } while (opcion < 1 || opcion > 5);
+
+            if (opcion == 1) {
+                System.out.println("Nueva tarea: ");
+                nuevaTarea = scanner.nextLine();
                 tareas.add(nuevaTarea);
                 completadas.add(false);
-
-            } else if (opciones.equals("2")) {
-                String buscar = "";
-                System.out.println("Nombre de la tarea:");
-                buscar = scanner.next();
-                Boolean encontrado = false;
-
-                for (int i = 0; i < tareas.size() && !encontrado; i++) {
-                    if (tareas.get(i).equals(buscar)) {
-                        encontrado = true;
-                        completadas.set(i, true);
+            } else if (opcion == 2) {
+                System.out.println("Nombre de la tarea: ");
+                tareaBuscar = scanner.nextLine();
+                tareaEncontrada = false;
+                for (int i = 0; i < tareas.size() && !tareaEncontrada; i++) {
+                    if (tareas.get(i).equalsIgnoreCase(tareaBuscar)) {
+                        tareaEncontrada = true;
+                        completadas.set(i, tareaEncontrada);
                     }
                 }
-
-                if (!encontrado)
-                    System.out.println("No encontrada");
-
-            } else if (opciones.equals("3")) {
-                ArrayList<String> pendientes = new ArrayList<String>();
-
-                for (int i = 0; i < completadas.size(); i++) {
-                    if (!completadas.get(i))
-                        pendientes.add(tareas.get(i));
+                if (!tareaEncontrada) {
+                    System.out.println("Tarea no encontrada");
                 }
-
-                System.out.println("Pendientes: " + pendientes);
-
-            } else if (opciones.equals("4")) {
-                ArrayList<String> hechas = new ArrayList<String>();
-
-                for (int i = 0; i < completadas.size(); i++) {
-                    if (completadas.get(i))
-                        hechas.add(tareas.get(i));
-                }
-
-                System.out.println("Completadas " + hechas);
+            } else if (opcion == 3) {
+                mostrarTarea(tareas, completadas, false);
+            } else if (opcion == 4) {
+                mostrarTarea(tareas, completadas, true);
             }
-
-        } while (!opciones.equals("5"));
-
+        } while (opcion != 5);
         scanner.close();
-
     }
 }
