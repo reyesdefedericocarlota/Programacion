@@ -47,6 +47,7 @@ public class PT2 {
                     posicionSeleccionada = scanner.nextInt();
 
                 } catch (Exception e) {
+                    scanner.nextLine();
                     System.out.println("Error, debes introducir un número entero");
                 }
             } while (tableroVisible.get(posicionSeleccionada) != DIENTE
