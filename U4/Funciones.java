@@ -1,6 +1,7 @@
 package U4;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Funciones {
 
@@ -43,5 +44,25 @@ public class Funciones {
             promedio = sumatorio / listado.size();
         }
         return promedio;
+    }
+
+    // Mostrar mensaje
+    public static void mostrarMensaje(String mensaje) {
+        System.out.println(mensaje);
+    }
+
+    // Elegir opcion de un menú
+    public static int opcionMenu(Scanner introScanner, String textoMenu, int min, int max, int parametroDefecto) {
+        int opcion;
+        do {
+            try {
+                mostrarMensaje(textoMenu);
+                opcion = Integer.parseInt(introScanner.nextLine());
+            } catch (NumberFormatException e) {
+                mostrarMensaje("Error, debes introducir un número.");
+                opcion = parametroDefecto;
+            }
+        } while (opcion < min || opcion > max);
+        return opcion;
     }
 }
