@@ -1,7 +1,6 @@
 package U4.U2.Relacion2;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Ejercicio4 {
@@ -24,7 +23,45 @@ public class Ejercicio4 {
         System.out.println(mensaje);
     }
 
- 
+    public static String comprobarLibro(Scanner scanner, ArrayList<String> listaLibros) {
+        String nombreLibro;
+        boolean encontrado = false;
+
+        do {
+            mostrarMensaje("Introduce el título del libro:");
+            nombreLibro = scanner.nextLine();
+
+            for (String libro : listaLibros) {
+                if (libro.equalsIgnoreCase(nombreLibro)) {
+                    encontrado = true;
+                }
+            }
+
+            if (!encontrado) {
+                mostrarMensaje("Libro no encontrado, intenta de nuevo.");
+            }
+
+        } while (!encontrado);
+
+        return nombreLibro;
+    }
+
+    public static int solicitarCantidad(Scanner scanner, int min, int parametroDefecto) {
+        int cantidad;
+        do {
+            try {
+                mostrarMensaje("Introduce la cantidad de ejemplares:");
+                cantidad = Integer.parseInt(scanner.nextLine());
+
+            } catch (NumberFormatException e) {
+                mostrarMensaje("Error, debes introducir un número.");
+                cantidad = parametroDefecto;
+            }
+
+        } while (cantidad <= min);
+
+        return cantidad;
+    }
 
     public static void mostrarIventario(ArrayList<String> listaLibros, ArrayList<Integer> listaCantidadLibros) {
         for (int i = 0; i < listaLibros.size(); i++) {
@@ -53,30 +90,24 @@ public class Ejercicio4 {
                 tituloLibro = scanner.nextLine();
                 libros.add(tituloLibro);
 
-                System.out.println("Introduce la cantidad de ejemplares del libro:");
-                cantidadLibro = scanner.nextInt();
-                scanner.nextLine();
+                cantidadLibro = solicitarCantidad(scanner, 0, -1);
                 cantidadLibros.add(cantidadLibro);
 
             } else if (elegirOpcion == 2) {
-                System.out.println("Introduce el título del libro del que desea actualizar la cantidad:");
-                tituloLibro = scanner.nextLine();
+                tituloLibro = comprobarLibro(scanner, libros);
                 for (int i = 0; i < libros.size(); i++) {
                     if (libros.get(i).equals(tituloLibro)) {
-                        System.out.println("Introduce la nueva cantidad:");
-                        cantidadLibro = scanner.nextInt();
+                        cantidadLibro = solicitarCantidad(scanner, 0, -1);
                         cantidadLibros.set(i, cantidadLibro);
                     }
                 }
 
-            } else {
+            } else if (elegirOpcion == 3) {
                 mostrarIventario(libros, cantidadLibros);
             }
 
         } while (elegirOpcion != 4);
-
     }
-
 }
 
 // 4. Gestión de Inventario de una Librería
