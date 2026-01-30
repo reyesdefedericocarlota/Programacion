@@ -65,4 +65,22 @@ public class Funciones {
         } while (opcion < min || opcion > max);
         return opcion;
     }
+
+    // Solicitar cantidad
+    public static int solicitarCantidad(Scanner scanner, int min, int parametroDefecto) {
+        int cantidad;
+        do {
+            try {
+                mostrarMensaje("Introduce la cantidad deseada:");
+                cantidad = Integer.parseInt(scanner.nextLine());
+
+            } catch (NumberFormatException e) {
+                mostrarMensaje("Error, debes introducir un número.");
+                cantidad = parametroDefecto;
+            }
+
+        } while (cantidad <= min);
+
+        return cantidad;
+    }
 }

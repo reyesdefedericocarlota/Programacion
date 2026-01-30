@@ -6,6 +6,66 @@ import java.util.Scanner;
 
 public class Ejercicio3 {
 
+    public static String solicitarProducto(Scanner scanner, ArrayList<String> listaProductos) {
+        String nombreProducto;
+        boolean encontrado;
+
+        do {
+            mostrarMensaje("Introduce el nombre del producto que desea comprar:");
+            nombreProducto = scanner.nextLine();
+
+            if (nombreProducto.equalsIgnoreCase("FIN")) {
+                encontrado = true; // Salimos del bucle si el usuario escribe FIN
+            } else {
+                encontrado = false;
+                for (String producto : listaProductos) {
+                    if (producto.equalsIgnoreCase(nombreProducto)) {
+                        encontrado = true; // Producto válido
+                    }
+                }
+
+                if (!encontrado) {
+                    mostrarMensaje("Producto no encontrado, intenta de nuevo.");
+                }
+            }
+
+        } while (!encontrado);
+
+        return nombreProducto;
+    }
+
+    public static int solicitarCantidad(Scanner scanner, int min, int parametroDefecto) {
+        int cantidad;
+        do {
+            try {
+                mostrarMensaje("Introduce la cantidad deseada:");
+                cantidad = Integer.parseInt(scanner.nextLine());
+
+            } catch (NumberFormatException e) {
+                mostrarMensaje("Error, debes introducir un número.");
+                cantidad = parametroDefecto;
+            }
+
+        } while (cantidad <= min);
+
+        return cantidad;
+    }
+
+    public static void resumenCompra(ArrayList<String> listaProductosAdquiridos,
+            ArrayList<Integer> listaCantidadProductos, double precioCompra) {
+        mostrarMensaje("Resumen compra:");
+
+        for (int i = 0; i < listaProductosAdquiridos.size(); i++) {
+            mostrarMensaje("\nProducto: " + listaProductosAdquiridos.get(i) + " \nCantidad: "
+                    + listaCantidadProductos.get(i));
+        }
+        mostrarMensaje("\nTotal a pagar: " + precioCompra + "€");
+    }
+
+    public static void mostrarMensaje(String mensaje) {
+        System.out.println(mensaje);
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -23,14 +83,11 @@ public class Ejercicio3 {
         double precioCompra;
         double totalCompra = 0;
 
-        System.out.println("Introduce el nombre del producto que desea comprar:");
-        producto = scanner.nextLine();
+        producto = solicitarProducto(scanner, productos);
 
         while (!producto.equalsIgnoreCase("FIN")) {
 
-            System.out.println("Introduce la cantidad deseada:");
-            cantidad = scanner.nextInt();
-            scanner.nextLine();
+            cantidad = solicitarCantidad(scanner, 0, -1);
 
             precioCompra = 0;
             for (int i = 0; i < productos.size(); i++) {
@@ -42,20 +99,12 @@ public class Ejercicio3 {
             }
             totalCompra += precioCompra;
 
-            System.out.println("Introduce el nombre del producto que desea comprar:");
-            producto = scanner.nextLine();
+            producto = solicitarProducto(scanner, productos);
         }
         scanner.close();
 
         if (producto.equalsIgnoreCase("FIN")) {
-
-            System.out.println("Resumen compra:" );
-
-            for (int i = 0; i < productosAdquiridos.size(); i++) {
-                System.out.println("\nProducto: " + productosAdquiridos.get(i) + " \nCantidad: "
-                        + cantidadProductos.get(i));
-            }
-            System.out.println( " \nTotal a pagar: " + totalCompra + "€");
+            resumenCompra(productosAdquiridos, cantidadProductos, totalCompra);
         }
 
     }
