@@ -83,4 +83,33 @@ public class Funciones {
 
         return cantidad;
     }
+
+    // Solicitar producto
+    public static String solicitarProducto(Scanner scanner, ArrayList<String> listaProductos) {
+        String nombreProducto;
+        boolean encontrado;
+
+        do {
+            mostrarMensaje("Introduce el nombre del producto que desea comprar:");
+            nombreProducto = scanner.nextLine();
+
+            if (nombreProducto.equalsIgnoreCase("FIN")) {
+                encontrado = true; // Salimos del bucle si el usuario escribe FIN
+            } else {
+                encontrado = false;
+                for (String producto : listaProductos) {
+                    if (producto.equalsIgnoreCase(nombreProducto)) {
+                        encontrado = true; // Producto válido
+                    }
+                }
+
+                if (!encontrado) {
+                    mostrarMensaje("Producto no encontrado, intenta de nuevo.");
+                }
+            }
+
+        } while (!encontrado);
+
+        return nombreProducto;
+    }
 }
