@@ -96,7 +96,7 @@ public class Ejercicio4 {
             } else if (elegirOpcion == 2) {
                 tituloLibro = comprobarLibro(scanner, libros);
                 for (int i = 0; i < libros.size(); i++) {
-                    if (libros.get(i).equals(tituloLibro)) {
+                    if (libros.get(i).equalsIgnoreCase(tituloLibro)) {
                         cantidadLibro = solicitarCantidad(scanner, 0, -1);
                         cantidadLibros.set(i, cantidadLibro);
                     }
