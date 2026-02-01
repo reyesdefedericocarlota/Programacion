@@ -44,11 +44,12 @@ public class tractoMatch {
         String trabajo;
         boolean trabajoValido = false;
 
-        mostrarMensaje("Introduce el tipo de trabajo que realiza");
-        trabajo = scanner.nextLine();
         do {
+            mostrarMensaje("Introduce el tipo de trabajo que realiza:");
+            trabajo = scanner.nextLine();
+
             for (String t : ListaTrabajos) {
-                if (t.equals(trabajo)) {
+                if (t.equals(trabajo.toLowerCase())) {
                     trabajoValido = true;
                 }
             }
@@ -100,6 +101,15 @@ public class tractoMatch {
 
                 trabajoTractor = validarTrabajo(scanner, validarTrabajos);
                 trabajos.add(trabajoTractor);
+
+            } else if (elegirOpcion == 2) {
+                for (int i = 0; i < marcas.size(); i++) {
+                    System.out.println(i + " -> Marca: " + marcas.get(i) + " | " + potencias.get(i) + "CV | trabajo: "
+                            + trabajos.get(i));
+                }
+
+            } else if (elegirOpcion == 3) {
+                
             }
         } while (elegirOpcion != 0);
     }
