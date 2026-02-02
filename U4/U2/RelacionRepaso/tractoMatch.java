@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class tractoMatch {
+public class TractoMatch {
 
     // Elegir opcion de un menú
     public static int opcionMenu(Scanner introScanner, String textoMenu, int min, int max, int parametroDefecto) {
@@ -62,6 +62,43 @@ public class tractoMatch {
         return trabajo;
     }
 
+    // Validar índice
+    public static int validarIndice(Scanner scanner, int min, int parametroDefecto, ArrayList<Integer> listaTractores) {
+        int indice;
+        do {
+            try {
+                mostrarMensaje("Introduce el índice del tractor que desea evaluar:");
+                indice = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                mostrarMensaje("Error, debes introducir un número.");
+                indice = parametroDefecto;
+            }
+        } while (indice < min || indice >= listaTractores.size());
+
+        return indice;
+    }
+
+    // Calcular tractor apto
+    public static void calcularApto(ArrayList<Integer> listaPotencias, int indiceValido, int min) {
+        int aleatorio = (int) (Math.random() * 2);
+
+        if (listaPotencias.get(indiceValido) >= min) {
+            mostrarMensaje("Resultado: APTO");
+            if (aleatorio == 1) {
+                mostrarMensaje("El tractor está listo para el trabajo 💪");
+            } else {
+                mostrarMensaje("Rendimiento adecuado, puede usarse sin problemas");
+            }
+        } else {
+            mostrarMensaje("Resultado: NO APTO");
+            if (aleatorio == 1) {
+                mostrarMensaje("La potencia es insuficiente para este trabajo");
+            } else {
+                mostrarMensaje("No cumple los requisitos mínimos");
+            }
+        }
+    }
+
     // Mostrar mensaje
     public static void mostrarMensaje(String mensaje) {
         System.out.println(mensaje);
@@ -87,6 +124,8 @@ public class tractoMatch {
         String marcaTractor;
         int potenciaTractor;
         String trabajoTractor;
+        int indice;
+        int potenciaMinima;
 
         do {
             elegirOpcion = opcionMenu(scanner, MENU, 0, 4, -1);
@@ -109,6 +148,26 @@ public class tractoMatch {
                 }
 
             } else if (elegirOpcion == 3) {
+
+                indice = validarIndice(scanner, 0, -1, potencias);
+
+                // Mostrar tractor evaluado
+                System.out.println("Tractor evaluado: " + marcas.get(indice) + " | "
+                        + potencias.get(indice) + "CV | trabajo: " + trabajos.get(indice));
+
+                // Determinar la potencia mínima según el trabajo
+                if (trabajos.get(indice).equals("arado")) {
+                    potenciaMinima = 120;
+                } else if (trabajos.get(indice).equals("transporte")) {
+                    potenciaMinima = 90;
+                } else { // "siembra"
+                    potenciaMinima = 70;
+                }
+
+                // Evaluar
+                calcularApto(potencias, indice, potenciaMinima);
+
+            } else if (elegirOpcion == 4) {
                 
             }
         } while (elegirOpcion != 0);
