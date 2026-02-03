@@ -4,6 +4,11 @@ public class Ejercicio3 {
 
     public static void main(String[] args) {
 
+        Alumno alumno1 = new Alumno("Carlota", "Programación", 8);
+        System.out.println("¿La calificación de " + alumno1.nombre + " es mayor o igual a 6? " + alumno1.aprobo(8));
+
+        Alumno alumno2 = new Alumno("Carlos", "Programación", 5);
+        System.out.println("¿La calificación de " + alumno2.nombre + " es mayor o igual a 6? " + alumno1.aprobo(5));
     }
 }
 
@@ -16,6 +21,10 @@ class Alumno {
         this.nombre = nombre;
         this.materia = materia;
         this.calificacion = calificacion;
+    }
+
+    boolean aprobo(double calificacion) {
+        return calificacion >= 6;
     }
 }
 
