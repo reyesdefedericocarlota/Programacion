@@ -1,4 +1,4 @@
-package U4.U2.RelacionRepaso;
+package U4.RelacionRepaso;
 
 import java.util.ArrayList;
 import java.util.Arrays;
