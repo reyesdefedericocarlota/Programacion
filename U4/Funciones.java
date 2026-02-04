@@ -238,4 +238,18 @@ public class Funciones {
         return resultado;
     }
 
+    // Listar varios arrays
+    public static void mostrarElemento(
+            int indice,
+            ArrayList<String> nombres,
+            ArrayList<Integer> valoresBase,
+            ArrayList<Integer> valoresActuales,
+            ArrayList<String> responsables) {
+
+        mostrarMensaje(indice + " -> " + nombres.get(indice)
+                + " | Base: " + valoresBase.get(indice)
+                + " | Actual: " + valoresActuales.get(indice)
+                + " | Responsable: " + responsables.get(indice));
+    }
+
 }

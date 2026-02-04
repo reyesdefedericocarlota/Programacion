@@ -101,7 +101,7 @@ public class Ejercicio2 {
         return indice;
     }
 
-    // Eliminar revisión de todas las lista
+    // Eliminar revisión de todas las listas
     public static String eliminarRevision(
             int indiceEliminado,
             ArrayList<String> listaMatriculas,
