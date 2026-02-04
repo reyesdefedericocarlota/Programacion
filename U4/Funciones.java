@@ -215,4 +215,27 @@ public class Funciones {
             mostrarMensaje("Título: " + listaLibros.get(i) + " - Número de ejemplares: " + listaCantidadLibros.get(i));
         }
     }
+
+    // Determina si se cumple una condición basada en el último dígito de una cadena
+    public static boolean cumpleCondicion(String texto) {
+        boolean resultado = false;
+        boolean digitoEncontrado = false;
+        char caracterActual;
+        int valorNumerico;
+
+        for (int i = texto.length() - 1; i >= 0; i--) {
+            caracterActual = texto.charAt(i);
+
+            if (!digitoEncontrado && Character.isDigit(caracterActual)) {
+                valorNumerico = Character.getNumericValue(caracterActual);
+                if (valorNumerico % 2 == 0) {
+                    resultado = true;
+                }
+                digitoEncontrado = true;
+            }
+        }
+
+        return resultado;
+    }
+
 }
