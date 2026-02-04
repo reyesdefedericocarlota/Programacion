@@ -252,4 +252,24 @@ public class Funciones {
                 + " | Responsable: " + responsables.get(indice));
     }
 
+    // Mostrar tareas completadas y pendientes
+    public static void mostrarTarea(ArrayList<String> listaTareas, ArrayList<Boolean> tareasCompletadas,
+            boolean mostrarCompletadas) {
+        ArrayList<String> tareasMostrar = new ArrayList<>();
+
+        for (int i = 0; i < tareasCompletadas.size(); i++) {
+            if (tareasCompletadas.get(i) == mostrarCompletadas) {
+                tareasMostrar.add(listaTareas.get(i));
+            }
+        }
+        if (tareasMostrar.isEmpty()) {
+            mostrarMensaje("No hay tareas a mostrar.");
+        } else {
+            mostrarMensaje(String.join("-", tareasMostrar));
+        }
+    }
+
+    // Genera un numero aleatorio entre 0.0 y 1.99 al multiplicarlo * 2. El int convierte el numero a entero.
+    int aleatorio = (int) (Math.random() * 2);
+
 }
