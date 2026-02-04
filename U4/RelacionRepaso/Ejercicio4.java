@@ -166,46 +166,51 @@ public class Ejercicio4 {
         do {
             elegirOpcion = opcionMenu(scanner, MENU, 0, 4, -1);
 
-            if (elegirOpcion == 1) {
-                System.out.println("Introduce el modelo del tractor:");
-                modeloTractor = scanner.nextLine();
-                tractores.add(modeloTractor);
+            if ((elegirOpcion == 2 || elegirOpcion == 3 || elegirOpcion == 4)
+                    && tractores.isEmpty()) {
+                System.out.println("No hay rutas registradas. Añade una primero.");
 
-                kmRuta = solicitarCantidad(scanner, 0, -1, MENSAJEKM);
-                kilometros.add(kmRuta);
+            } else {
+                if (elegirOpcion == 1) {
+                    System.out.println("Introduce el modelo del tractor:");
+                    modeloTractor = scanner.nextLine();
+                    tractores.add(modeloTractor);
 
-                litrosTractor = solicitarCantidad(scanner, 0, -1, MENSAJELITROS);
-                litrosDisponibles.add(litrosTractor);
+                    kmRuta = solicitarCantidad(scanner, 0, -1, MENSAJEKM);
+                    kilometros.add(kmRuta);
 
-                terreno = validarArray(scanner, tipoTerreno);
-                terrenos.add(terreno);
+                    litrosTractor = solicitarCantidad(scanner, 0, -1, MENSAJELITROS);
+                    litrosDisponibles.add(litrosTractor);
 
-            } else if (elegirOpcion == 2) {
-                for (int i = 0; i < tractores.size(); i++) {
-                    mostrarRuta(i, tractores, kilometros, litrosDisponibles, terrenos);
+                    terreno = validarArray(scanner, tipoTerreno);
+                    terrenos.add(terreno);
+
+                } else if (elegirOpcion == 2) {
+                    for (int i = 0; i < tractores.size(); i++) {
+                        mostrarRuta(i, tractores, kilometros, litrosDisponibles, terrenos);
+                    }
+
+                } else if (elegirOpcion == 3) {
+                    indice = validarIndice(scanner, 0, -1, MENSAJEINDICE, tractores);
+                    litrosNecesarios = 0;
+
+                    if (terrenos.get(indice).equals("llano")) {
+                        litrosNecesarios = kilometros.get(indice) * LITROSLLANO;
+
+                    } else if (terrenos.get(indice).equals("mixto")) {
+                        litrosNecesarios = kilometros.get(indice) * LITROSMIXTO;
+
+                    } else {
+                        litrosNecesarios = kilometros.get(indice) * LITROSMONTAÑA;
+                    }
+                    
+                    calcularRuta(indice, litrosDisponibles, litrosNecesarios);
+
+                } else if (elegirOpcion == 4) {
+                    indice = validarIndice(scanner, 0, -1, MENSAJEINDICE, tractores);
+                    eliminarRuta(indice, tractores, kilometros, litrosDisponibles, terrenos);
                 }
-
-            } else if (elegirOpcion == 3) {
-                indice = validarIndice(scanner, 0, -1, MENSAJEINDICE, tractores);
-                litrosNecesarios = 0;
-
-                if (terrenos.get(indice).equals("llano")) {
-                    litrosNecesarios = kilometros.get(indice) * LITROSLLANO;
-
-                } else if (terrenos.get(indice).equals("mixto")) {
-                    litrosNecesarios = kilometros.get(indice) * LITROSMIXTO;
-
-                } else {
-                    litrosNecesarios = kilometros.get(indice) * LITROSMONTAÑA;
-                }
-
-                calcularRuta(indice, litrosDisponibles, litrosNecesarios);
-
-            } else if (elegirOpcion == 4) {
-                indice = validarIndice(scanner, 0, -1, MENSAJEINDICE, tractores);
-                eliminarRuta(indice, tractores, kilometros, litrosDisponibles, terrenos);
             }
-
         } while (elegirOpcion != 0);
         scanner.close();
         System.out.println("Ha salido del programa");
