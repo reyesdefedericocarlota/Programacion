@@ -3,16 +3,15 @@
 package U4.U3.Relacion0;
 
 public class Ejercicio19 {
+    public static String capitalizarPrimeraLetra(String cadena) {
+        return Character.toUpperCase(cadena.charAt(0)) + cadena.substring(1);
+    }
 
-    public static String capitalizarPrimeraletra()
+    public static void main(String[] args) {
 
+        System.out.println(capitalizarPrimeraLetra("hola"));
+    }
 }
 
 
-//    function capitalizarPrimeraLetra(palabra) {
-//         let primeraLetraMayuscula = palabra[0].toUpperCase() + palabra.slice(1)
-//         return primeraLetraMayuscula
-//     }
 
-//     console.log(capitalizarPrimeraLetra("hola"))
-//     console.log(capitalizarPrimeraLetra("carlota"))
