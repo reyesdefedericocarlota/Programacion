@@ -67,11 +67,11 @@ public class Funciones {
     }
 
     // Solicitar cantidad
-    public static int solicitarCantidad(Scanner scanner, int min, int parametroDefecto) {
+    public static int solicitarCantidad(Scanner scanner, int min, int parametroDefecto, String mensaje) {
         int cantidad;
         do {
             try {
-                mostrarMensaje("Introduce la cantidad deseada:");
+                mostrarMensaje(mensaje);
                 cantidad = Integer.parseInt(scanner.nextLine());
 
             } catch (NumberFormatException e) {
