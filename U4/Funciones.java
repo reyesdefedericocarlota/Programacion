@@ -84,7 +84,31 @@ public class Funciones {
         return cantidad;
     }
 
-    // Solicitar producto
+    // Control de errores comprobar que un elemento esté en su array correspondiente
+    public static String comprobarElemento(Scanner scanner, ArrayList<String> listaElementos) {
+        String elemento;
+        boolean encontrado = false;
+
+        do {
+            mostrarMensaje("Introduce el elemento:");
+            elemento = scanner.nextLine();
+
+            for (String nombreElemento : listaElementos) {
+                if (nombreElemento.equalsIgnoreCase(elemento)) {
+                    encontrado = true;
+                }
+            }
+
+            if (!encontrado) {
+                mostrarMensaje("Elemento no encontrado, intenta de nuevo.");
+            }
+
+        } while (!encontrado);
+
+        return elemento;
+    }
+
+    // Comprobar un elemento de un array y si el usuario escribe fin se sale
     public static String solicitarProducto(Scanner scanner, ArrayList<String> listaProductos) {
         String nombreProducto;
         boolean encontrado;
@@ -111,5 +135,84 @@ public class Funciones {
         } while (!encontrado);
 
         return nombreProducto;
+    }
+
+    // Control de errores al introducir un número
+    public static int solicitarNumero(Scanner scanner, int min, int parametroDefecto) {
+        int numero;
+        do {
+            try {
+                mostrarMensaje("Introduce un número:");
+                numero = Integer.parseInt(scanner.nextLine());
+
+            } catch (NumberFormatException e) {
+                mostrarMensaje("Error, debes introducir un número.");
+                numero = parametroDefecto;
+            }
+
+        } while (numero <= min);
+
+        return numero;
+    }
+
+    // Control de errores al solicitar un elemento que pertenece a un array
+    public static String validarArray(Scanner scanner, ArrayList<String> ListaElementos) {
+        String elemento;
+        boolean elementoValido = false;
+
+        do {
+            mostrarMensaje("Introduce un elemento:");
+            elemento = scanner.nextLine();
+
+            for (String t : ListaElementos) {
+                if (t.equals(elemento.toLowerCase())) {
+                    elementoValido = true;
+                }
+            }
+
+            if (!elementoValido) {
+                mostrarMensaje("Error, debes introducir un elemento válido.");
+            }
+        } while (!elementoValido);
+
+        return elemento;
+    }
+
+    // Validar índice de un array
+    public static int validarIndice(Scanner scanner, int min, int parametroDefecto, String mensaje,
+            ArrayList<Integer> listaElementos) {
+        int indice;
+        do {
+            try {
+                mostrarMensaje(mensaje);
+                indice = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                mostrarMensaje("Error, debes introducir un número.");
+                indice = parametroDefecto;
+            }
+        } while (indice < min || indice >= listaElementos.size());
+
+        return indice;
+    }
+
+    // Eliminar elementos de varios arrays
+    public static String eliminarElementos(
+            int indiceEliminado,
+            ArrayList<String> listaMarcas,
+            ArrayList<Integer> listaPotencias,
+            ArrayList<String> listaTrabajos) {
+
+        String marcaEliminada = listaMarcas.remove(indiceEliminado);
+        listaPotencias.remove(indiceEliminado);
+        listaTrabajos.remove(indiceEliminado);
+
+        return marcaEliminada;
+    }
+
+    // Mostrar elementos de varios arrays
+    public static void mostrarIventario(ArrayList<String> listaLibros, ArrayList<Integer> listaCantidadLibros) {
+        for (int i = 0; i < listaLibros.size(); i++) {
+            mostrarMensaje("Título: " + listaLibros.get(i) + " - Número de ejemplares: " + listaCantidadLibros.get(i));
+        }
     }
 }

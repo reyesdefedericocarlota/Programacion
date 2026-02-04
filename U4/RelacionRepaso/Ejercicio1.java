@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class TractoMatch {
+public class Ejercicio1 {
 
     // Elegir opcion de un menú
     public static int opcionMenu(Scanner introScanner, String textoMenu, int min, int max, int parametroDefecto) {
