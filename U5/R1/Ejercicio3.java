@@ -17,12 +17,14 @@ class Alumno {
     String materia;
     double calificacion;
 
+    // Constructor
     Alumno(String nombre, String materia, double calificacion) {
         this.nombre = nombre;
         this.materia = materia;
         this.calificacion = calificacion;
     }
 
+    // Método
     boolean aprobo(double calificacion) {
         return calificacion >= 6;
     }
