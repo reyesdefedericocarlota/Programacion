@@ -1,51 +1,15 @@
 package U5.R2.Ejercicio3;
 
+import java.util.Scanner;
+
 import U5.R2.Faker;
 
 public class Ejercicio3 {
 
     public static void main(String[] args) {
-
-        Producto champuHS = new Producto("Champú HS",
-                "Olor a limón",
-                3.49,
-                100);
-        Producto champuPantene = new Producto("Champú Pantene",
-                "Olor a hierbabuena",
-                2.5,
-                50);
-        Producto champuHacendado = new Producto("Champú Hacendado",
-                "Olor neutral",
-                1.7,
-                150);
-
-        if (!champuHS.setPrecio(-8.01)) {
-            System.err.println("Ha habido un error actualizando el precio");
-        }
-        if (!champuHS.setPrecio(8)) {
-            System.err.println("Ha habido un error actualizando el precio");
-        }
-
-        System.out.println(champuHS.getPrecio());
-
-        if (!champuHS.setCantidadEnStock(-8)) {
-            System.err.println("Ha habido un error actualizando la cantidad");
-        }
-
-        if (!champuHS.setCantidadEnStock(50)) {
-            System.err.println("Ha habido un error actualizando la cantidad");
-        }
-
-        System.out.println(champuHS.getCantidadEnStock());
+        Scanner scanner = new Scanner(System.in);
 
         Supermercado mercadona = new Supermercado();
-        mercadona.agregarProducto(champuHS);
-        mercadona.agregarProducto(champuPantene);
-        mercadona.agregarProducto(champuHacendado);
-        System.out.println(mercadona);
-        mercadona.venderProducto(champuHS, 20);
-        System.out.println(mercadona);
-        System.out.println(mercadona.mostrarInventario());
 
         final int CANTIDAD_PRODUCTOS = 100;
         Producto aleatorio = new Producto(null, null, 0, 0);
@@ -56,8 +20,73 @@ public class Ejercicio3 {
             mercadona.agregarProducto(aleatorio);
         }
 
-        System.out.println(mercadona.mostrarInventario());
+        final String MENU = "Elige una de las siguientes opciones:\n" +
+                "0 = Salir\n" +
+                "1 = Reponer producto\n" +
+                "2 = Vender producto\n" +
+                "3 = Mostrar inventario";
+        int elegirOpcion;
+        Producto productoRepuesto;
+
+        do {
+            elegirOpcion = opcionMenu(scanner, MENU, 0, 3, -1);
+
+            if (elegirOpcion == 1) {
+
+                System.out.println("Ingrese ID del producto:");
+                String id = scanner.nextLine();
+
+                System.out.println("Cantidad a reponer:");
+                int cantidad = Integer.parseInt(scanner.nextLine());
+
+                productoRepuesto = mercadona.reponerProducto(id, cantidad);
+                if (productoRepuesto != null) {
+                    System.out.println("Producto repuesto con éxito:");
+                    System.out.println(productoRepuesto);
+                } else {
+                    System.out.println("No se encontró el producto.");
+                }
+
+            } else if (elegirOpcion == 2) {
+
+                System.out.println("Ingrese ID del producto:");
+                String id = scanner.nextLine();
+
+                System.out.println("Cantidad a vender:");
+                int cantidad = Integer.parseInt(scanner.nextLine());
+
+                boolean vendido = mercadona.venderProducto(id, cantidad);
+
+                if (vendido) {
+                    System.out.println("Venta realizada correctamente.");
+                } else {
+                    System.out.println("No se pudo realizar la venta.");
+                }
+
+            } else {
+                System.out.println(mercadona.mostrarInventario());
+            }
+
+        } while (elegirOpcion != 0);
 
     }
 
+    // Elegir opcion de un menú
+    public static int opcionMenu(Scanner introScanner, String textoMenu, int min, int max, int parametroDefecto) {
+        int opcion;
+        do {
+            try {
+                mostrarMensaje(textoMenu);
+                opcion = Integer.parseInt(introScanner.nextLine());
+            } catch (NumberFormatException e) {
+                mostrarMensaje("Error, debes introducir un número.");
+                opcion = parametroDefecto;
+            }
+        } while (opcion < min || opcion > max);
+        return opcion;
+    }
+
+    public static void mostrarMensaje(String mensaje) {
+        System.out.println(mensaje);
+    }
 }

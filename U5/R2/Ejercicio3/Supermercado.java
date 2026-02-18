@@ -14,12 +14,43 @@ public class Supermercado {
         productos.add(producto);
     }
 
-    public void venderProducto(Producto producto, int cantidadComprar) {
-        if (productos.contains(producto)) {
-            if (producto.getCantidadEnStock() - cantidadComprar >= 0) {
-                producto.setCantidadEnStock(producto.getCantidadEnStock() - cantidadComprar);
+    public boolean venderProducto(String id, int cantidadComprar) {
+        boolean vendido = false;
+        Producto producto = null;
+
+        // Buscar producto
+        for (Producto p : productos) {
+            if (p.getId().equalsIgnoreCase(id)) {
+                producto = p;
             }
         }
+
+        // Si existe y hay stock suficiente
+        if (producto != null) {
+            if (producto.getCantidadEnStock() >= cantidadComprar) {
+                producto.setCantidadEnStock(
+                        producto.getCantidadEnStock() - cantidadComprar);
+                vendido = true;
+            }
+        }
+        return vendido;
+    }
+
+    public Producto reponerProducto(String id, int cantidadReponer) {
+        Producto producto = null;
+
+        // Buscar producto
+        for (Producto p : productos) {
+            if (p.getId().equalsIgnoreCase(id)) {
+                producto = p;
+            }
+        }
+        if (producto != null && cantidadReponer > 0) {
+            producto.setCantidadEnStock(
+                    producto.getCantidadEnStock() + cantidadReponer);
+        }
+        return producto;
+
     }
 
     public String mostrarInventario() {
