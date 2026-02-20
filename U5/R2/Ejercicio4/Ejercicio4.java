@@ -27,7 +27,8 @@ public class Ejercicio4 {
         int elegirOpcion;
         String nombreCancion;
         String autor;
-        int duracion;
+        int duracion = 0;
+        boolean duracionCorrecta = false;
 
         do {
             elegirOpcion = opcionMenu(scanner, MENU, 0, 3, -1);
@@ -37,9 +38,23 @@ public class Ejercicio4 {
                 nombreCancion = scanner.nextLine();
                 System.out.println("Introduce el nombre del autor: ");
                 autor = scanner.nextLine();
-                System.out.println("Introduce la duración (en segundos) de la canción: ");
-                duracion = scanner.nextInt();
-                scanner.nextLine();
+
+                while (!duracionCorrecta) {
+                    System.out.println("Introduce la duración (en segundos) de la canción: ");
+
+                    try {
+                        duracion = Integer.parseInt(scanner.nextLine());
+
+                        if (duracion < 0) {
+                            System.out.println("Error: la duración no puede ser negativa.");
+                        } else {
+                            duracionCorrecta = true;
+                        }
+
+                    } catch (NumberFormatException e) {
+                        System.out.println("Error: debes introducir un número válido.");
+                    }
+                }
 
                 Cancion cancion = new Cancion(nombreCancion, autor, duracion);
                 europaFm.agregarCancion(cancion);
