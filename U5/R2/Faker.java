@@ -273,6 +273,16 @@ public class Faker {
     }
 
     /**
+     * Genera una palabraLorem aleatoria
+     * 
+     * @return PalabraLorem aleatoria
+     */
+    public static String palabrasLorem() {
+        int posicionAleatoria = entero(0, palabrasLorem.length - 1);
+        return palabrasLorem[posicionAleatoria];
+    }
+
+    /**
      * Genera un apellido aleatorio.
      * 
      * @return Apellido aleatorio.
