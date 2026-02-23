@@ -15,7 +15,7 @@ public class Amarre {
 
     public Amarre(int numero, double longitudMaxima, String tipoAmarre, boolean ocupado) {
         setNumero(numero);
-        setTipoAmarre(tipoAmarre); 
+        setTipoAmarre(tipoAmarre);
         setLongitudMaxima(longitudMaxima);
         this.ocupado = ocupado;
     }
@@ -63,27 +63,28 @@ public class Amarre {
         if (!TIPOS_VALIDOS.contains(tipoAmarre.toUpperCase())) {
             throw new IllegalArgumentException("Tipo de amarre no válido");
         }
-        this.tipoAmarre = tipoAmarre;
+        this.tipoAmarre = tipoAmarre.toUpperCase();
         calcularPrecio();
     }
 
     private void calcularPrecio() {
-        if (tipoAmarre.toUpperCase().equals(TIPOS_VALIDOS.get(0))) {
+        if (tipoAmarre.equals(TIPOS_VALIDOS.get(0))) {
             precioDia = 25 + (1.5 * longitudMaxima);
-        } else if (tipoAmarre.toUpperCase().equals(TIPOS_VALIDOS.get(1))) {
+        } else if (tipoAmarre.equals(TIPOS_VALIDOS.get(1))) {
             precioDia = 60 + (2.2 * longitudMaxima);
         } else {
             precioDia = 120 + (3.5 * longitudMaxima);
         }
     }
 
+    public String consultarDisponibilidad() {
+        return ocupado ? "Está ocupado." : "Está libre.";
+    }
+
     @Override
     public String toString() {
-        return "Datos sobre el amarre:\n" +
-                "numero: " + numero + " | " +
-                " longitud máxima: " + longitudMaxima + " | " +
-                " tipo: " + tipoAmarre + " | " +
-                " precio: " + precioDia + " | " +
-                " ocupado: " + ocupado;
+        return "Amarre " + numero + " del tipo " + tipoAmarre + ". Longitud maxima de "
+                + longitudMaxima + "m con precio diario de " + getPrecioDia() + "€/dia. "
+                + consultarDisponibilidad();
     }
 }

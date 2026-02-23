@@ -107,12 +107,7 @@ public class Embarcacion {
 
     @Override
     public String toString() {
-        return "matricula: " + matricula + " | " +
-                " nombre: " + nombre + " | " +
-                " eslora: " + eslora + " | " +
-                " tipo: " + tipo + " | " +
-                " propietario: " + propietario + " | " +
-                " anioFabricacion: " + anioFabricacion + " | " +
-                " valorEstimado: " + valorEstimado;
+        return nombre + " - Matricula: " + matricula + " con " + eslora+ "m de eslora de " + propietario + ". Es una embarcacion tipo " + tipo + 
+                 " de "  + anioFabricacion + " con un valor estimado de " + valorEstimado + "€.";
     }
 }
