@@ -60,7 +60,7 @@ public class Puerto {
 
     public void setAmarres(Amarre[] amarres) {
         if (amarres.length > capacidadMaxima) {
-            throw new IllegalArgumentException("La cantidad de amarres no puede superar la capacidad máxima.");
+            throw new IllegalArgumentException("La cantidad de amarres no puede superar la capacidad máxima del puerto.");
         }
         this.amarres = amarres;
     }
