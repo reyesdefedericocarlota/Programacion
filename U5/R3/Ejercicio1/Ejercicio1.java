@@ -37,10 +37,12 @@ public class Ejercicio1 {
         }
 
         Amarre a1 = new Amarre(1, 26, "Normal", false);
-        Amarre a2 = new Amarre(2, 26, "Premium", true);
+        Amarre a2 = new Amarre(2, 26, "Premium", false);
+        Amarre a3 = new Amarre(3, 26, "Premium", true);
 
         System.out.println(puerto.altaAmarre(a1));
         System.out.println(puerto.altaAmarre(a2));
+        System.out.println(puerto.altaAmarre(a3));
 
         System.out.println("Estado del array amarres:");
         for (Amarre a : amarres) {
@@ -50,6 +52,24 @@ public class Ejercicio1 {
                 System.out.println("Vacío");
             }
         }
+
+        System.out.println("Estado del array amarres:");
+        for (Amarre a : amarres) {
+            if (a != null) {
+                System.out.println(a);
+            } else {
+                System.out.println("Vacío");
+            }
+        }
+        System.out.println(puerto.mostrarAmarresOcupados());
+        System.out.println(puerto.mostrarAmarresLibres());
+
+        System.out.println(puerto.asignarAmarre("MAT001", 2));
+        System.out.println(puerto.buscarEmbarcacion("MAT001"));
+
+        System.out.println(puerto.calcularIngresosDiariosActuales());
+        System.out.println(puerto.calcularIngresosDiariosMaximos());
+        System.out.println(puerto);
     }
 
 }
