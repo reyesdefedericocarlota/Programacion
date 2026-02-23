@@ -68,10 +68,10 @@ public class Embarcacion {
     }
 
     public void setEslora(double eslora) {
-        if (eslora > 0) {
+        if (eslora < 0) {
             throw new IllegalArgumentException("La eslora debe ser mayor que 0.");
         }
-       
+       this.eslora = eslora;
     }
 
     public void setTipo(String tipo) {
