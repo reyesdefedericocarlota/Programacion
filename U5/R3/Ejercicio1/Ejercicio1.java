@@ -6,7 +6,7 @@ public class Ejercicio1 {
         Embarcacion embarcacion1 = new Embarcacion("2343", null, 0, "Yate", null, 2026, 0);
         System.out.println(embarcacion1);
 
-        Amarre amarre1 = new Amarre(1, 4, "Premium", false);
+        Amarre amarre1 = new Amarre(1, 4, "Normal", false);
         System.out.println(amarre1);
 
         Embarcacion[] embarcaciones = new Embarcacion[5];

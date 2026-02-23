@@ -15,9 +15,8 @@ public class Amarre {
 
     public Amarre(int numero, double longitudMaxima, String tipoAmarre, boolean ocupado) {
         setNumero(numero);
+        setTipoAmarre(tipoAmarre); 
         setLongitudMaxima(longitudMaxima);
-        setTipoAmarre(tipoAmarre);
-        calcularPrecio();
         this.ocupado = ocupado;
     }
 
@@ -69,9 +68,9 @@ public class Amarre {
     }
 
     private void calcularPrecio() {
-        if (tipoAmarre.equals(TIPOS_VALIDOS.get(0))) {
+        if (tipoAmarre.toUpperCase().equals(TIPOS_VALIDOS.get(0))) {
             precioDia = 25 + (1.5 * longitudMaxima);
-        } else if (tipoAmarre.equals(TIPOS_VALIDOS.get(1))) {
+        } else if (tipoAmarre.toUpperCase().equals(TIPOS_VALIDOS.get(1))) {
             precioDia = 60 + (2.2 * longitudMaxima);
         } else {
             precioDia = 120 + (3.5 * longitudMaxima);
