@@ -1,5 +1,6 @@
 package U5.R3.Ejercicio1;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,10 +12,10 @@ public class Embarcacion {
     private String tipo;
     private String propietario;
     private int anioFabricacion;
-    public double valorEstimado;
+    private double valorEstimado;
 
-    private static final List<String> TIPOS_VALIDOS = Arrays.asList("Velero", "Lancha", "Yate", "Catamarán",
-            "Moto de agua");
+    private static final List<String> TIPOS_VALIDOS = new ArrayList<>(
+            Arrays.asList("VELERO", "LANCHA", "YATE", "CATAMARAN", "MOTO DE AGUA"));
 
     public Embarcacion(String matricula, String nombre, double eslora,
             String tipo, String propietario,
@@ -54,10 +55,14 @@ public class Embarcacion {
         return anioFabricacion;
     }
 
+    public double getValorEstimado() {
+        return valorEstimado;
+    }
+
     // Setters
 
     public void setMatricula(String matricula) {
-        if (matricula == null || matricula.trim().isEmpty()) {
+        if (matricula == null || matricula.isBlank()) {
             throw new IllegalArgumentException("La matrícula no puede ser null ni vacía.");
         }
         this.matricula = matricula;
@@ -71,11 +76,11 @@ public class Embarcacion {
         if (eslora < 0) {
             throw new IllegalArgumentException("La eslora debe ser mayor que 0.");
         }
-       this.eslora = eslora;
+        this.eslora = eslora;
     }
 
     public void setTipo(String tipo) {
-        if (!TIPOS_VALIDOS.contains(tipo)) {
+        if (!TIPOS_VALIDOS.contains(tipo.toUpperCase())) {
             throw new IllegalArgumentException("Tipo de embarcación no válido.");
         }
         this.tipo = tipo;
@@ -102,8 +107,7 @@ public class Embarcacion {
 
     @Override
     public String toString() {
-        return "Datos sobre la embarcacion:\n" +
-                "matricula: " + matricula + " | " +
+        return "matricula: " + matricula + " | " +
                 " nombre: " + nombre + " | " +
                 " eslora: " + eslora + " | " +
                 " tipo: " + tipo + " | " +

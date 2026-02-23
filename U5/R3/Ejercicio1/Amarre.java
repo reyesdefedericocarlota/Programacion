@@ -1,16 +1,17 @@
 package U5.R3.Ejercicio1;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Amarre {
     private int numero;
     private double longitudMaxima;
-    public double precioDia;
+    private double precioDia;
     private boolean ocupado;
-    public String tipoAmarre;
+    private String tipoAmarre;
 
-    private static final List<String> TIPOS_VALIDOS = Arrays.asList("Normal", "Premium", "Megayate");
+    private static final List<String> TIPOS_VALIDOS = new ArrayList<>(Arrays.asList("NORMAL", "PREMIUM", "MEGAYATE"));
 
     public Amarre(int numero, double longitudMaxima, String tipoAmarre, boolean ocupado) {
         setNumero(numero);
@@ -28,8 +29,16 @@ public class Amarre {
         return longitudMaxima;
     }
 
+    public double getPrecioDia() {
+        return precioDia;
+    }
+
     public boolean isOcupado() {
         return ocupado;
+    }
+
+    public String getTipoAmarre() {
+        return tipoAmarre;
     }
 
     public void setNumero(int numero) {
@@ -44,6 +53,7 @@ public class Amarre {
             throw new IllegalArgumentException("La longitud máxima debe ser mayor o igual que 4.0");
         }
         this.longitudMaxima = longitudMaxima;
+        calcularPrecio();
     }
 
     public void setOcupado(boolean ocupado) {
@@ -51,16 +61,17 @@ public class Amarre {
     }
 
     public void setTipoAmarre(String tipoAmarre) {
-        if (!TIPOS_VALIDOS.contains(tipoAmarre)) {
+        if (!TIPOS_VALIDOS.contains(tipoAmarre.toUpperCase())) {
             throw new IllegalArgumentException("Tipo de amarre no válido");
         }
         this.tipoAmarre = tipoAmarre;
+        calcularPrecio();
     }
 
     private void calcularPrecio() {
-        if (tipoAmarre.equals("Normal")) {
+        if (tipoAmarre.equals(TIPOS_VALIDOS.get(0))) {
             precioDia = 25 + (1.5 * longitudMaxima);
-        } else if (tipoAmarre.equals("Premium")) {
+        } else if (tipoAmarre.equals(TIPOS_VALIDOS.get(1))) {
             precioDia = 60 + (2.2 * longitudMaxima);
         } else {
             precioDia = 120 + (3.5 * longitudMaxima);
