@@ -1,75 +1,57 @@
 package U5.R3.Ejercicio1;
 
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+
+import U5.R3.Faker;
+
 public class Ejercicio1 {
 
     public static void main(String[] args) {
-        Embarcacion embarcacion1 = new Embarcacion("2343", null, 0, "Yate", null, 2026, 0);
-        System.out.println(embarcacion1);
+        Scanner scanner = new Scanner(System.in);
 
-        Amarre amarre1 = new Amarre(1, 4, "Normal", false);
-        System.out.println(amarre1);
+        final int NUMERO_AMARRES = 50;
+        final int NUMERO_EMBARCACIONES = 100;
+        Puerto puerto1 = new Puerto("Barcelona", NUMERO_AMARRES, "640953583");
 
-        Embarcacion[] embarcaciones = new Embarcacion[5];
-        Amarre[] amarres = new Amarre[5];
-        Puerto puerto = new Puerto("Puerto Real", "Barcelona", 5, "123456789",
-                amarres, embarcaciones, new String[5]);
-
-        Embarcacion e1 = new Embarcacion("MAT001", "Velero Uno", 10, "Velero", "Ana", 2005, 5000);
-        Embarcacion e2 = new Embarcacion("MAT002", "Lancha Dos", 8, "Lancha", "Luis", 2010, 3000);
-        Embarcacion e3 = new Embarcacion("MAT001", "Velero Tres", 12, "Velero", "Marta", 2015, 7000);
-
-        if (puerto.registrarEmbarcacion(e1)) {
-            System.out.println("Embarcación registrada correctamente");
-        } else {
-            System.out.println("No se pudo registrar la embarcación");
+        for (int i = 0; i < NUMERO_AMARRES; i++) {
+            Amarre aleatorio = new Amarre(Faker.longitudMaximaAmarre(), Faker.tipoAmarre(), false);
+            puerto1.altaAmarre(aleatorio);
         }
 
-        System.out.println(puerto.registrarEmbarcacion(e2)); // true
-        System.out.println(puerto.registrarEmbarcacion(e3)); // false (matrícula repetida)
+        // for (Amarre a : puerto1.getAmarres()) {
+        // System.out.println(a);
+        // }
 
-        System.out.println("Estado del array embarcaciones:");
-        for (Embarcacion e : embarcaciones) {
-            if (e != null) {
-                System.out.println(e.getMatricula() + " - " + e.getNombre());
-            } else {
-                System.out.println("Vacío");
+        for (int i = 0; i < NUMERO_EMBARCACIONES; i++) {
+            Embarcacion aleatoria = new Embarcacion(Faker.matriculaEmbarcacion(), Faker.nombreEmbarcacion(),
+                    Faker.eslora(), Faker.tipoEmbarcacion(), Faker.nombre(), Faker.anioFabricacionEmbarcacion(),
+                    Faker.precio(2000, 5000));
+            puerto1.registrarEmbarcacion(aleatoria);
+        }
+
+        // for (Embarcacion emb : puerto1.getEmbarcaciones()) {
+        // System.out.println(emb);
+        // }
+
+        Random random = new Random();
+
+        int asignadas = 0;
+
+        while (asignadas < 20) {
+            Embarcacion e = puerto1.getEmbarcaciones().get(random.nextInt(puerto1.getEmbarcaciones().size()));
+            Amarre a = puerto1.getAmarres().get(random.nextInt(puerto1.getAmarres().size()));
+
+            boolean exito = puerto1.asignarAmarreAleatorio(e, a);
+            if (exito) {
+                asignadas++; // solo contamos si realmente se asignó
             }
         }
 
-        Amarre a1 = new Amarre(1, 26, "Normal", false);
-        Amarre a2 = new Amarre(2, 26, "Premium", false);
-        Amarre a3 = new Amarre(3, 26, "Premium", true);
-
-        System.out.println(puerto.altaAmarre(a1));
-        System.out.println(puerto.altaAmarre(a2));
-        System.out.println(puerto.altaAmarre(a3));
-
-        System.out.println("Estado del array amarres:");
-        for (Amarre a : amarres) {
-            if (a != null) {
-                System.out.println(a);
-            } else {
-                System.out.println("Vacío");
-            }
+        for (String mat : puerto1.getMatriculasAmarradas()) {
+            System.out.println(mat);
         }
-
-        System.out.println("Estado del array amarres:");
-        for (Amarre a : amarres) {
-            if (a != null) {
-                System.out.println(a);
-            } else {
-                System.out.println("Vacío");
-            }
-        }
-        System.out.println(puerto.mostrarAmarresOcupados());
-        System.out.println(puerto.mostrarAmarresLibres());
-
-        System.out.println(puerto.asignarAmarre("MAT001", 2));
-        System.out.println(puerto.buscarEmbarcacion("MAT001"));
-
-        System.out.println(puerto.calcularIngresosDiariosActuales());
-        System.out.println(puerto.calcularIngresosDiariosMaximos());
-        System.out.println(puerto);
     }
 
 }

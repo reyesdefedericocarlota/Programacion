@@ -1,23 +1,27 @@
 package U5.R3.Ejercicio1;
 
+import java.util.ArrayList;
+
 public class Puerto {
+    private static int numeroPuertos;
+
     private String nombre;
     public String ubicacion;
     private int capacidadMaxima;
     public String telefonoContacto;
-    private Amarre[] amarres;
-    private Embarcacion[] embarcaciones;
-    private String[] matriculasAmarradas;
+    private ArrayList<Amarre> amarres;
+    private ArrayList<Embarcacion> embarcaciones;
+    private ArrayList<String> matriculasAmarradas;
 
-    public Puerto(String nombre, String ubicacion, int capacidadMaxima, String telefonoContacto, Amarre[] amarres,
-            Embarcacion[] embarcaciones, String[] matriculasAmarradas) {
-        this.nombre = nombre;
+    public Puerto(String ubicacion, int capacidadMaxima, String telefonoContacto) {
+        asignarNombre();
         this.ubicacion = ubicacion;
         this.capacidadMaxima = capacidadMaxima;
         this.telefonoContacto = telefonoContacto;
-        setAmarres(amarres);
-        this.embarcaciones = embarcaciones;
-        this.matriculasAmarradas = matriculasAmarradas;
+
+        this.amarres = new ArrayList<>();
+        this.embarcaciones = new ArrayList<>();
+        this.matriculasAmarradas = new ArrayList<>();
     }
 
     public String getNombre() {
@@ -28,15 +32,15 @@ public class Puerto {
         return capacidadMaxima;
     }
 
-    public Amarre[] getAmarres() {
+    public ArrayList<Amarre> getAmarres() {
         return amarres;
     }
 
-    public Embarcacion[] getEmbarcaciones() {
+    public ArrayList<Embarcacion> getEmbarcaciones() {
         return embarcaciones;
     }
 
-    public String[] getMatriculasAmarradas() {
+    public ArrayList<String> getMatriculasAmarradas() {
         return matriculasAmarradas;
     }
 
@@ -44,149 +48,103 @@ public class Puerto {
         this.nombre = nombre;
     }
 
-    public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
-    }
-
     public void setCapacidadMaxima(int capacidadMaxima) {
         this.capacidadMaxima = capacidadMaxima;
     }
 
-    public void setTelefonoContacto(String telefonoContacto) {
-        this.telefonoContacto = telefonoContacto;
-    }
-
-    public void setAmarres(Amarre[] amarres) {
-        if (amarres.length > capacidadMaxima) {
-            throw new IllegalArgumentException("La cantidad de amarres no puede superar la capacidad máxima del puerto.");
+    public void setAmarres(ArrayList<Amarre> amarres) {
+        if (amarres.size() > capacidadMaxima) {
+            throw new IllegalArgumentException(
+                    "La cantidad de amarres no puede superar la capacidad máxima del puerto.");
         }
         this.amarres = amarres;
+        for (int i = 0; i < amarres.size(); i++) {
+            matriculasAmarradas.add("VACIO");
+        }
     }
 
-    public void setEmbarcaciones(Embarcacion[] embarcaciones) {
+    public void setEmbarcaciones(ArrayList<Embarcacion> embarcaciones) {
         this.embarcaciones = embarcaciones;
     }
 
-    public void setMatriculasAmarradas(String[] matriculasAmarradas) {
+    public void setMatriculasAmarradas(ArrayList<String> matriculasAmarradas) {
         this.matriculasAmarradas = matriculasAmarradas;
     }
 
-    public int numEmbarcaciones() {
-        int count = 0;
-        for (Embarcacion e : embarcaciones) {
-            if (e != null) {
-                count++;
-            }
-        }
-        return count;
-    }
-
-    public int numAmarres() {
-        int count = 0;
-        for (Amarre a : amarres) {
-            if (a != null)
-                count++;
-        }
-        return count;
+    public void asignarNombre() {
+        setNombre("Puerto-" + numeroPuertos);
+        numeroPuertos++;
     }
 
     @Override
     public String toString() {
-        return "Nombre del puerto: " + nombre + " || Ubicación: " + ubicacion + " || Teléfono: " + telefonoContacto
-                + " || Número de amarres: " + numAmarres() + "|| Número de embarcaciones: "
-                + numEmbarcaciones();
+        return getNombre()
+                + ", Ubicación=" + ubicacion
+                + ", Teléfono=" + telefonoContacto
+                + ", CapacidadMáxima=" + capacidadMaxima
+                + ", Amarres=" + amarres.size()
+                + ", Embarcaciones=" + embarcaciones.size();
     }
 
+    // Registra embarcacion y devuelve tue si la encuentra false en caso contrario
     public boolean registrarEmbarcacion(Embarcacion e) {
-        boolean embRegistrada = true;
-        boolean agregada = false;
+        boolean embarcacionRegistrada = false;
 
-        // Comprobar si ya existe la matrícula
-        for (Embarcacion emb : embarcaciones) {
-            if (emb != null && emb.getMatricula().equals(e.getMatricula())) {
-                embRegistrada = false;
-            }
+        if (!embarcaciones.contains(e)) {
+            embarcaciones.add(e);
+            embarcacionRegistrada = true;
         }
 
-        // Agregar en la primera posición libre solo si se puede registrar
-        if (embRegistrada) {
-            for (int i = 0; i < embarcaciones.length && !agregada; i++) {
-                if (embarcaciones[i] == null) {
-                    embarcaciones[i] = e;
-                    agregada = true;
-                }
-            }
-        }
-
-        return embRegistrada && agregada;
+        return embarcacionRegistrada;
     }
 
+    // Registra embarcacion y devuelve tue si la encuentra false en caso contrario
     public boolean altaAmarre(Amarre a) {
-        boolean amarreRegistrado = true;
-        boolean agregado = false;
+        boolean amarreRegistrado = false;
 
-        for (Amarre amarre : amarres) {
-            if (amarre != null && amarre.getNumero() == a.getNumero()) {
-                amarreRegistrado = false;
-            }
+        if (!amarres.contains(a) && amarres.size() <= capacidadMaxima) {
+            amarres.add(a);
+            matriculasAmarradas.add("VACIO");
+            amarreRegistrado = true;
         }
 
-        if (amarreRegistrado) {
-            for (int i = 0; i < amarres.length && !agregado; i++) {
-                if (amarres[i] == null) {
-                    amarres[i] = a;
-                    agregado = true;
-                }
+        return amarreRegistrado;
+    }
+
+    // Devuelve la embarcacion si la encuentra o null si no
+    public Embarcacion buscarEmbarcacionEnPuerto(String matricula) {
+        Embarcacion embarcacionBuscar = null;
+
+        for (Embarcacion embarcacion : embarcaciones) {
+            if (matricula.equals(embarcacion.getMatricula())) {
+                embarcacionBuscar = embarcacion;
             }
         }
+        return embarcacionBuscar;
 
-        return amarreRegistrado && agregado;
     }
 
     public boolean asignarAmarre(String matricula, int numeroAmarre) {
-        boolean asignado = false;
-        boolean embarcacionExiste = false;
-        boolean yaAmarrada = false;
-        Embarcacion embarcacion = null;
-
-        // Buscar la embarcación por matrícula
-        for (Embarcacion e : embarcaciones) {
-            if (e != null && e.getMatricula().equals(matricula)) {
-                embarcacionExiste = true;
-                embarcacion = e;
-            }
-        }
-
-        // Comprobar si ya está amarrada
-        for (String m : matriculasAmarradas) {
-            if (m != null && m.equals(matricula)) {
-                yaAmarrada = true;
-            }
-        }
-
-        // Asignar al amarre correcto
-        if (embarcacionExiste && !yaAmarrada) {
-            for (int i = 0; i < amarres.length && !asignado; i++) {
-                Amarre a = amarres[i];
-                if (a != null && a.getNumero() == numeroAmarre && !a.isOcupado()) {
-                    if (embarcacion.getEslora() <= a.getLongitudMaxima()) {
-                        a.setOcupado(true);
-                        matriculasAmarradas[i] = matricula;
-                        asignado = true;
-                    }
+        boolean amarreAsignado = false;
+        Amarre amarreAsignar = amarres.get(numeroAmarre);
+        Embarcacion embarcacionAsignar = buscarEmbarcacionEnPuerto(matricula);
+        if (!matriculasAmarradas.contains(embarcacionAsignar.getMatricula())) {
+            if (!amarreAsignar.isOcupado()) {
+                if (embarcacionAsignar.getEslora() <= amarreAsignar.getLongitudMaxima()) {
+                    matriculasAmarradas.set(numeroAmarre, matricula);
+                    amarreAsignado = true;
                 }
             }
         }
-
-        return asignado;
+        return amarreAsignado;
     }
 
     public void liberarAmarre(int numeroAmarre) {
         boolean amarreLiberado = false;
-        for (int i = 0; i < amarres.length && !amarreLiberado; i++) {
-            if (amarres[i].getNumero() == numeroAmarre) {
-                amarres[i].setOcupado(false);
-                matriculasAmarradas[i] = null;
+        for (int i = 0; i < amarres.size() && !amarreLiberado; i++) {
+            if (amarres.get(i).getNumero() == numeroAmarre) {
+                amarres.get(i).setOcupado(false);
+                matriculasAmarradas.set(numeroAmarre, "VACÍO");
                 amarreLiberado = true;
             }
         }
@@ -196,7 +154,7 @@ public class Puerto {
         String mensaje = "Amarres libres:\n";
 
         for (Amarre a : amarres) {
-            if (a != null && !a.isOcupado()) {
+            if (!a.isOcupado()) {
                 mensaje += a + "\n";
             }
         }
@@ -207,42 +165,61 @@ public class Puerto {
         String mensaje = "Amarres ocupados:\n";
 
         for (Amarre a : amarres) {
-            if (a != null && a.isOcupado()) {
+            if (a.isOcupado()) {
                 mensaje += a + "\n";
             }
         }
         return mensaje;
     }
 
-    public boolean buscarEmbarcacion(String matricula) {
-        boolean amarreEncontrado = false;
-
-            for (int i = 0; i < matriculasAmarradas.length && !amarreEncontrado; i++) {
-                if (matriculasAmarradas[i] != null && matriculasAmarradas[i].equals(matricula)) {
-                    mostrarMensaje("La embarcación se encuentra en el amarre " + amarres[i].getNumero());
-                    amarreEncontrado = true;
+    public void buscarEmbarcacion(String matricula) {
+        Embarcacion embarcacionAsignar = buscarEmbarcacionEnPuerto(matricula);
+        if (embarcacionAsignar != null) {
+            if (matriculasAmarradas.contains(embarcacionAsignar.getMatricula())) {
+                for (int i = 0; i < matriculasAmarradas.size(); i++) {
+                    if (matriculasAmarradas.get(i).equals(matricula)) {
+                        mostrarMensaje("La embarcación está amarrada en el amarre nº " + amarres.get(i));
+                    }
                 }
+            } else {
+                mostrarMensaje("La embarcación está registrada pero no está amarrada.");
             }
-        
-        return amarreEncontrado;
+
+        } else {
+            mostrarMensaje("No existe ninguna embarcación con esa matrícula.");
+        }
     }
 
+    public boolean asignarAmarreAleatorio(Embarcacion embarcacion, Amarre amarre) {
+        boolean amarreAsignado = false;
+        if (!matriculasAmarradas.contains(embarcacion.getMatricula())
+                && !amarre.isOcupado()
+                && embarcacion.getEslora() <= amarre.getLongitudMaxima()) {
+
+            matriculasAmarradas.set(amarres.indexOf(amarre), embarcacion.getMatricula());
+            amarre.setOcupado(true);
+            amarreAsignado = true;
+        }
+        return amarreAsignado;
+    }
+
+    // Suma `precioDia` de amarres ocupados.
     public double calcularIngresosDiariosActuales() {
         double sumaPrecios = 0;
         for (Amarre a : amarres) {
-            if (a != null && a.isOcupado()) {
+            if (a.isOcupado()) {
                 sumaPrecios += a.getPrecioDia();
             }
         }
         return sumaPrecios;
     }
 
+    // Suma `precioDia` de todos los amarres.
     public double calcularIngresosDiariosMaximos() {
         double sumaPrecios = 0;
         for (Amarre a : amarres) {
-            if (a != null) {
-                sumaPrecios += a.getPrecioDia();
-            }
+            sumaPrecios += a.getPrecioDia();
+
         }
         return sumaPrecios;
     }

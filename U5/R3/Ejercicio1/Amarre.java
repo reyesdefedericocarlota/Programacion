@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Amarre {
+    private static int numeroAmarre = 1;
     private int numero;
     private double longitudMaxima;
     private double precioDia;
@@ -13,8 +14,8 @@ public class Amarre {
 
     private static final List<String> TIPOS_VALIDOS = new ArrayList<>(Arrays.asList("NORMAL", "PREMIUM", "MEGAYATE"));
 
-    public Amarre(int numero, double longitudMaxima, String tipoAmarre, boolean ocupado) {
-        setNumero(numero);
+    public Amarre(double longitudMaxima, String tipoAmarre, boolean ocupado) {
+        asignarNumero();
         setTipoAmarre(tipoAmarre);
         setLongitudMaxima(longitudMaxima);
         this.ocupado = ocupado;
@@ -77,13 +78,18 @@ public class Amarre {
         }
     }
 
+    public void asignarNumero() {
+        setNumero(numeroAmarre);
+        numeroAmarre++;
+    }
+
     public String consultarDisponibilidad() {
         return ocupado ? "Está ocupado." : "Está libre.";
     }
 
     @Override
     public String toString() {
-        return "Amarre " + numero + " del tipo " + tipoAmarre + ". Longitud maxima de "
+        return "Amarre " + getNumero() + " del tipo " + tipoAmarre + ". Longitud maxima de "
                 + longitudMaxima + "m con precio diario de " + getPrecioDia() + "€/dia. "
                 + consultarDisponibilidad();
     }
