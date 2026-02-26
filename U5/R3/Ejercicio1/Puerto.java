@@ -90,11 +90,12 @@ public class Puerto {
     public boolean registrarEmbarcacion(Embarcacion e) {
         boolean embarcacionRegistrada = false;
 
-        if (!embarcaciones.contains(e)) {
-            embarcaciones.add(e);
-            embarcacionRegistrada = true;
+        for (Embarcacion emb : embarcaciones) {
+            if (!emb.getMatricula().equalsIgnoreCase(emb.getMatricula())) {
+                embarcaciones.add(emb);
+                embarcacionRegistrada = true;
+            }
         }
-
         return embarcacionRegistrada;
     }
 
