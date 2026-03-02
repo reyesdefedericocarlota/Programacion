@@ -98,6 +98,19 @@ public class PT5 {
 
     }
 
+    /**
+     * Muestra un menú y solicita al usuario que introduzca una opción válida.
+     * Controla errores de formato (no numérico) y obliga a que la opción esté
+     * dentro del rango [min, max].
+     *
+     * @param introScanner     Scanner para leer la entrada del usuario.
+     * @param textoMenu        Texto del menú que se mostrará.
+     * @param min              Valor mínimo válido de la opción.
+     * @param max              Valor máximo válido de la opción.
+     * @param parametroDefecto Valor que se asigna si la entrada no es un número
+     *                         válido.
+     * @return Opción seleccionada por el usuario (entero dentro del rango [min,max]).
+     */
     public static int opcionMenu(Scanner introScanner, String textoMenu, int min, int max, int parametroDefecto) {
         int opcion;
         do {
@@ -112,6 +125,11 @@ public class PT5 {
         return opcion;
     }
 
+    /**
+     * Muestra un mensaje por consola.
+     *
+     * @param mensaje El texto que se mostrará en pantalla.
+     */
     public static void mostrarMensaje(String mensaje) {
         System.out.println(mensaje);
     }
