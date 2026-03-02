@@ -6,6 +6,9 @@ public class Animal {
     private int cantidad;
     private double precio;
 
+    private static final double PRECIO_MINIMO = 50.0;
+    private static final double PRECIO_MAXIMO = 5000.0;
+
     public Animal(String nombre, String codigo, int cantidad, double precio) {
         setNombre(nombre);
         setCodigo(codigo);
@@ -40,6 +43,9 @@ public class Animal {
         if (codigo == null || codigo.isBlank()) {
             throw new IllegalArgumentException("El código no puede ser null ni estar vacío.");
         }
+        if (codigo.length() != 6) {
+            throw new IllegalArgumentException("El código debe tener exactamente 6 caracteres.");
+        }
         this.codigo = codigo;
     }
 
@@ -51,8 +57,9 @@ public class Animal {
     }
 
     public void setPrecio(double precio) {
-        if (precio <= 0) {
-            throw new IllegalArgumentException("El precio debe ser mayor que 0.");
+        if (precio < PRECIO_MINIMO || precio > PRECIO_MAXIMO) {
+            throw new IllegalArgumentException(
+                    "El precio debe estar entre " + PRECIO_MINIMO + "€ y " + PRECIO_MAXIMO + "€.");
         }
         this.precio = precio;
     }

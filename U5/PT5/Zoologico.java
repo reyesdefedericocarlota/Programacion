@@ -10,7 +10,7 @@ public class Zoologico {
         this.animales = new ArrayList<>();
     }
 
-    public void agregarAnimales(Animal animal) {
+    public void agregarAnimal(Animal animal) {
         animales.add(animal);
     }
 
@@ -34,45 +34,67 @@ public class Zoologico {
         return animalBuscar;
     }
 
-    public boolean agregarEjemplares(Animal animal, int cantidadAnimal) {
-        boolean ejemplarAgregado = false;
+    // [0] -> Agregado correctamente
+    // [1] -> No existe el animal
+    // [2] -> Cantidad negativa o 0
+    public ArrayList<Boolean> agregarEjemplares(String codigo, int cantidad) {
+        ArrayList<Boolean> controlErrores = new ArrayList<>(Arrays.asList(false, false, false));
+        Animal animalEncontrado = buscarAnimal(codigo);
 
-        if (animales.contains(animal)) {
-            animal.setCantidad(animal.getCantidad() + cantidadAnimal);
-            ejemplarAgregado = true;
+        if (animalEncontrado == null) {
+            controlErrores.set(1, true); // Animal no encontrado
+        } else if (cantidad <= 0) {
+            controlErrores.set(2, true); // Cantidad inválida
+        } else {
+            animalEncontrado.setCantidad(animalEncontrado.getCantidad() + cantidad);
+            controlErrores.set(0, true); // Agregado correctamente
         }
-        return ejemplarAgregado;
+        return controlErrores;
     }
 
     // Devuelve un array de Booleanos para gestionar si se han retirado ejemplares o
     // no
 
-    // [0]->Si se ha retirado o no
-    // [1]->En caso de no estar retirado, si no exite el animal
-    // [2]->En caso de no estar retirado, si la cantidada retirar es un num negativo
-    // [3]-> // // // // //, si ha sido se ha intentado retirar más de lo disponible
-    public ArrayList<Boolean> retirarEjemplares(String nombre, int cantidadAnimal) {
+    // [0] -> Si se ha retirado o no
+    // [1] -> Si no existe el animal
+    // [2] -> Si la cantidad es negativa o 0
+    // [3] -> Si se intenta retirar más de lo disponible
+    public ArrayList<Boolean> retirarEjemplares(String codigo, int cantidad) {
         ArrayList<Boolean> controlErrores = new ArrayList<>(Arrays.asList(false, false, false, false));
-        int cantidadEjemplar;
+        Animal animalEncontrado = buscarAnimal(codigo);
 
-        for (int i = 0; i < animales.size() && !controlErrores.get(1); i++) {
-            if (animales.get(i).getNombre().equals(nombre)) {
-                controlErrores.set(1, true);
-                if (cantidadAnimal > 0) {
-                    controlErrores.set(2, true);
-                    cantidadEjemplar = animales.get(i).getCantidad() - cantidadAnimal;
-                    if (cantidadEjemplar >= 0) {
-                        controlErrores.set(3, true);
-                        controlErrores.set(0, true);
-                        animales.get(i).setCantidad(cantidadEjemplar);
-                    }
-                }
+        if (animalEncontrado == null) {
+            controlErrores.set(1, true); // No existe
+        } else if (cantidad <= 0) {
+            controlErrores.set(2, true); // Cantidad inválida
+        } else {
+            int cantidadRestante = animalEncontrado.getCantidad() - cantidad;
+            if (cantidadRestante < 0) {
+                controlErrores.set(3, true); // Intento de retirar más de lo disponible
+            } else {
+                animalEncontrado.setCantidad(cantidadRestante);
+                controlErrores.set(0, true); // Retirado correctamente
             }
         }
-
         return controlErrores;
     }
 
-    public ArrayList<Boolean> eliminarAnimal(Animal animal) {
+    // [0]->Si se ha retirado o no
+    // [1]->En caso de no estar retirado, si no exite el animal
+    // [2]->En caso de no estar retirado, si el animal tiene ejemplares
+    public ArrayList<Boolean> eliminarAnimal(String codigo) {
+        ArrayList<Boolean> controlErrores = new ArrayList<>(Arrays.asList(false, false, false));
+        Animal animalEncontrado = buscarAnimal(codigo);
+
+        if (animalEncontrado == null) {
+            controlErrores.set(1, true); // No existe
+        } else if (animalEncontrado.getCantidad() > 0) {
+            controlErrores.set(2, true); // Tiene ejemplares
+        } else {
+            animales.remove(animalEncontrado);
+            controlErrores.set(0, true); // Eliminado correctamente
+        }
+
+        return controlErrores;
     }
 }
