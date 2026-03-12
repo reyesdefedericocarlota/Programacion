@@ -8,7 +8,7 @@ class Diseniador extends Empleado {
     }
 
     public double calcularSueldo() {
-        return sueldoBase * BONIFICADOR;
+        return getSueldoBase() * BONIFICADOR;
     }
 
 }

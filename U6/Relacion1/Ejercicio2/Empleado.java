@@ -2,7 +2,7 @@ package U6.Relacion1.Ejercicio2;
 
 public class Empleado {
     protected String nombre;
-    protected double sueldoBase;
+    private double sueldoBase;
 
     public Empleado(String nombre, double sueldoBase) {
         this.nombre = nombre;
@@ -14,6 +14,15 @@ public class Empleado {
         return "Nombre: " + nombre + " || Sueldo base: " + sueldoBase;
     }
 
+    public double getSueldoBase() {
+        return sueldoBase;
+    }
+
+    public void setSueldoBase(double sueldoBase) {
+        this.sueldoBase = sueldoBase;
+    }
+
+    
     
 
 }
