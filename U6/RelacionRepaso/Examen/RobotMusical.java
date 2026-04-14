@@ -8,11 +8,11 @@ public class RobotMusical extends IntegranteFestival implements Afinable, Gestio
     private ArrayList<Presentador> presentadoresACargo;
 
     public RobotMusical(String nombre, int energia, int cacheBAse, int ritmosAfinados, int potenciaLaser,
-            ArrayList<Presentador> presentadoresAcargo) {
+            ArrayList<Presentador> presentadoresACargo) {
         super(nombre, energia, cacheBAse);
         this.ritmosAfinados = ritmosAfinados;
         this.potenciaLaser = potenciaLaser;
-        this.presentadoresACargo = presentadoresAcargo;
+        this.presentadoresACargo = presentadoresACargo;
     }
 
     public int getRitmosAfinados() {
@@ -56,11 +56,12 @@ public class RobotMusical extends IntegranteFestival implements Afinable, Gestio
 
         if (presentador == null) {
             agregado = false;
-        }
 
-        for (Presentador p : presentadoresACargo) {
-            if (p.getNombre().equals(presentador.getNombre())) {
-                agregado = false;
+        } else {
+            for (int i = 0; i < presentadoresACargo.size() && agregado; i++) {
+                if (presentadoresACargo.get(i).getNombre().equals(presentador.getNombre())) {
+                    agregado = false;
+                }
             }
         }
 
@@ -76,7 +77,7 @@ public class RobotMusical extends IntegranteFestival implements Afinable, Gestio
 
         for (int i = 0; i < presentadoresACargo.size() && !eliminado; i++) {
             if (presentadoresACargo.get(i).getNombre().equals(nombre)) {
-                presentadoresACargo.remove(presentadoresACargo.get(i));
+                presentadoresACargo.remove(i);
                 eliminado = true;
             }
         }

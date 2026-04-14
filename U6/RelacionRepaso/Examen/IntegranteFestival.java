@@ -39,12 +39,10 @@ public abstract class IntegranteFestival {
 
     abstract boolean puedeActuar();
 
-    public int recargarEnergia(int cantidad) {
+    public void recargarEnergia(int cantidad) {
         if (cantidad > 0) {
             energia += cantidad;
         }
-
-        return energia;
     }
 
 }

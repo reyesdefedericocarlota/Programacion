@@ -1,8 +1,8 @@
 package U6.RelacionRepaso.Examen;
 
 public class Presentador extends IntegranteFestival {
-    int numeroBromas;
-    int carisma;
+    private int numeroBromas;
+    private int carisma;
 
     public Presentador(String nombre, int energia, int cacheBase, int numeroBromas, int carisma) {
         super(nombre, energia, cacheBase);
